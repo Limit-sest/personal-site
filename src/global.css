@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  --color-accent: rgb(0, 49, 211);
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "FUNGISRegular", sans-serif;
+}
+
+@font-face {
+  font-family: "FUNGISRegular";
+  src:
+    url("fonts/fungis_regular.woff") format("woff"),
+    url("fonts/fungis_regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
