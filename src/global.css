@@ -3,15 +3,16 @@
 @theme {
   --color-accent: rgb(0, 49, 211);
   --font-sans: "DM Sans", sans-serif;
-  --font-display: "FUNGISRegular", sans-serif;
+  --font-display: "ClashDisplay-Semibold", sans-serif;
 }
 
 @font-face {
-  font-family: "FUNGISRegular";
+  font-family: "ClashDisplay-Semibold";
   src:
-    url("fonts/fungis_regular.woff") format("woff"),
-    url("fonts/fungis_regular.ttf") format("truetype");
+    url("../fonts/ClashDisplay-Semibold.woff2") format("woff2"),
+    url("../fonts/ClashDisplay-Semibold.woff") format("woff"),
+    url("../fonts/ClashDisplay-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
   font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
 }
