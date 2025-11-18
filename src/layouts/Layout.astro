@@ -1,5 +1,7 @@
 ---
 import "../global.css";
+
+const { header } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,7 +22,16 @@ import "../global.css";
     <main
       class="border-accent mx-auto grid max-w-2xl grid-cols-12 gap-2 border"
     >
-      <header class="bg-accent col-span-12 h-12"></header>
+      <header
+        class="bg-accent col-span-12 flex items-center-safe justify-between gap-2 px-6 py-2"
+      >
+        <a
+          class="font-display text-white hover:underline"
+          href="https://kucera.dev">Tonda Kučera</a
+        >
+        <div class="h-1 flex-1 border-b border-b-white"></div>
+        <p class="font-display text-white">{header}</p>
+      </header>
       <slot />
     </main>
   </body>
