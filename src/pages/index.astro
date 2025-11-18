@@ -5,11 +5,36 @@ import Layout from "../layouts/Layout.astro";
 <Layout header="O mně">
   <section class="col-span-12 p-6">
     <h1 class="font-display text-accent mb-2 text-4xl font-bold">Ahoj!</h1>
-    <p class="text-xl">
-      <span class="text-accent">Já jsem Tonda Kučera a je mi 16 let.</span> Rád tvořím
-      nové věci a jsem kreativní. Baví mě design a vývoj webů, tvoření grafiky a
-      experimentování s počítači. Taky mám rád kávu a lezení.
+    <p class="mb-3 text-xl">
+      <span class="text-accent font-medium">Já jsem Tonda a je mi 16 let.</span>
+      Rád tvořím nové věci a jsem kreativní. Baví mě design a vývoj webů, tvoření
+      grafiky a experimentování s počítači. Taky mám rád kafe a lezení.
     </p>
-    <p>Můžeš mě najít</p>
+    <p class="mb-2 text-xl">Můžeš mě najít na...</p>
+    <ul role="list" class="space-y-2 text-xl">
+      <li>
+        Githubu, jako <a
+          href="https://github.com/Limit-sest"
+          class="text-accent font-medium underline">@Limit-sest</a
+        >
+      </li>
+      <li>
+        Discordu, jako <a class="text-accent font-medium">@limit6</a>
+      </li>
+      <li>
+        Nebo mi napiš email na <a class="text-accent font-medium"
+          >tonda@kucera.dev</a
+        >
+      </li>
+    </ul>
   </section>
 </Layout>
+<style>
+  ul {
+    list-style-type: "✳";
+    list-style-position: inside;
+  }
+  li {
+    padding-left: 12px;
+  }
+</style>
