@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+
+const projects = await getCollection("projects");
+---
+
+<Layout header="Projekty" lang="cs">
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    {
+      projects.map((project) => (
+        <a href={`/projects/${project.id}`}>
+          <article class="relative aspect-3/2 overflow-hidden rounded-4xl">
+            <Picture
+              src={project.data.image}
+              alt={project.data.name}
+              class="absolute top-0 -z-10 h-full"
+            />
+            <header class="absolute bottom-0 flex flex-col bg-linear-to-t from-black via-black to-transparent p-3">
+              <h2 class="font-display text-xl text-white">
+                {project.data.name}
+              </h2>
+              <p class="text-sm text-white">{project.data.description}</p>
+            </header>
+          </article>
+        </a>
+      ))
+    }
+  </div>
+</Layout>
