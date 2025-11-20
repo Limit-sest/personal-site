@@ -18,62 +18,62 @@ const { header, lang } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body>
-    <main class="border-accent mx-auto max-w-2xl border">
-      <header>
-        <div
-          class="bg-accent flex items-center-safe justify-between gap-2 px-6 py-3"
+  <body class="border-accent mx-auto max-w-2xl border">
+    <header>
+      <div
+        class="bg-accent flex items-center-safe justify-between gap-2 px-6 py-3"
+      >
+        <a
+          class="font-display text-white hover:underline"
+          href="https://kucera.dev">Tonda Kučera</a
         >
-          <a
-            class="font-display text-white hover:underline"
-            href="https://kucera.dev">Tonda Kučera</a
-          >
-          <div class="h-1 flex-1 border-b border-b-white"></div>
-          <p class="font-display text-white">{header}</p>
-        </div>
-        <nav
-          class="border-b-accent links flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
+        <div class="h-1 flex-1 border-b border-b-white"></div>
+        <p class="font-display text-white">{header}</p>
+      </div>
+      <nav
+        class="border-b-accent links flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
+      >
+        <a
+          href="/"
+          class:list={[
+            "hover:text-accent hover:underline",
+            { "font-display": header === "O mně" },
+          ]}>O mně</a
         >
-          <a
-            href=""
-            class:list={[
-              "hover:text-accent hover:underline",
-              { "font-display": header === "O mně" },
-            ]}>O mně</a
-          >
-          <a
-            href="/projects"
-            class:list={[
-              "hover:text-accent hover:underline",
-              { "font-display": header === "Projekty" },
-            ]}>Projekty</a
-          >
-          <a
-            href="/graphics"
-            class:list={[
-              "hover:text-accent hover:underline",
-              { "font-display": header === "Grafika" },
-            ]}>Grafika</a
-          >
-          <a
-            href="/other"
-            class:list={[
-              "hover:text-accent hover:underline",
-              { "font-display": header === "Ostatní" },
-            ]}>Ostatní</a
-          >
-        </nav>
-      </header>
+        <a
+          href="/projects"
+          class:list={[
+            "hover:text-accent hover:underline",
+            { "font-display": header === "Projekty" },
+          ]}>Projekty</a
+        >
+        <a
+          href="/graphics"
+          class:list={[
+            "hover:text-accent hover:underline",
+            { "font-display": header === "Grafika" },
+          ]}>Grafika</a
+        >
+        <a
+          href="/other"
+          class:list={[
+            "hover:text-accent hover:underline",
+            { "font-display": header === "Ostatní" },
+          ]}>Ostatní</a
+        >
+      </nav>
+    </header>
+    <main class="p-8">
       <slot />
-      <footer>
-        <div
-          class="border-t-accent text-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3 font-medium"
-        >
-          <p>&copy;Tonda Kučera 2025</p>
-          <div class="border-b-accent h-1 flex-1 border-b"></div>
-          <p>Vytvořeno bez AI.</p>
-        </div>
-      </footer>
     </main>
+    <footer>
+      <div
+        class="border-t-accent text-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3 font-medium"
+      >
+        <p>&copy;Tonda Kučera 2025</p>
+        <div class="border-b-accent h-1 flex-1 border-b"></div>
+        <p>Vytvořeno bez AI.</p>
+      </div>
+    </footer>
   </body>
 </html>
