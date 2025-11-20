@@ -2,16 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout header="O mně">
-  <section class="col-span-12 px-6 py-12">
-    <h1 class="font-display text-accent mb-2 text-4xl font-bold">Ahoj!</h1>
+<Layout header="O mně" lang="cs">
+  <section class="mt-12 px-6">
+    <h1 class="font-display text-accent mb-2 text-4xl font-bold">ahoj,</h1>
     <p class="mb-3 text-xl">
-      <span class="text-accent font-medium">Já jsem Tonda a je mi 16 let.</span>
+      <span class="text-accent font-medium">já jsem Tonda.</span>
       Rád tvořím nové věci a jsem kreativní. Baví mě design a vývoj webů, tvoření
       grafiky a experimentování s počítači. Taky mám rád kafe a lezení.
     </p>
-    <p class="mb-2 text-xl">Můžeš mě najít na...</p>
-    <ul role="list" class="space-y-2 text-xl">
+  </section>
+  <section class="px-6">
+    <h2 class="mb-2 text-xl">Můžeš mě najít na...</h2>
+    <ul role="list" class="star space-y-2 text-xl">
       <li>
         Githubu, jako <a
           href="https://github.com/Limit-sest"
@@ -28,10 +30,21 @@ import Layout from "../layouts/Layout.astro";
       </li>
     </ul>
   </section>
+  <section class="mb-12 px-6">
+    <h2></h2>
+  </section>
 </Layout>
 <style>
-  ul {
+  ul.star {
     list-style-type: "✳";
+  }
+  ul.minus {
+    list-style-type: "-";
+  }
+  ul.plus {
+    list-style-type: "+";
+  }
+  ul {
     list-style-position: inside;
   }
   li {

@@ -1,16 +1,16 @@
 ---
 import "../global.css";
 
-const { header } = Astro.props;
+const { header, lang } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Tonda | {header}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,10 +19,8 @@ const { header } = Astro.props;
     />
   </head>
   <body>
-    <main
-      class="border-accent mx-auto grid max-w-2xl grid-cols-12 gap-2 border"
-    >
-      <header class="col-span-12">
+    <main class="border-accent mx-auto max-w-2xl border">
+      <header>
         <div
           class="bg-accent flex items-center-safe justify-between gap-2 px-6 py-3"
         >
@@ -34,34 +32,24 @@ const { header } = Astro.props;
           <p class="font-display text-white">{header}</p>
         </div>
         <nav
-          class="border-b-accent col-span-12 flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
+          class="border-b-accent flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
         >
           <a href="">O mně</a>
-          <a href="">O mně</a>
-          <a href="">O mně</a>
-          <a href="">O mně</a>
+          <a href="">Projekty</a>
+          <a href="">Grafika</a>
         </nav>
       </header>
       <slot />
-      <footer class="col-span-12 rotate-180">
+      <footer>
         <div
-          class="bg-accent flex items-center-safe justify-between gap-2 px-6 py-3"
+          class="border-t-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3"
         >
-          <a
-            class="font-display text-white hover:underline"
-            href="https://kucera.dev">Tonda Kučera</a
-          >
-          <div class="h-1 flex-1 border-b border-b-white"></div>
-          <p class="font-display text-white">{header}</p>
+          <p class="font-display text-accent hover:underline">
+            &copy;Tonda Kučera 2025
+          </p>
+          <div class="border-b-accent h-1 flex-1 border-b"></div>
+          <p class="font-display text-accent">Vytvořeno bez AI.</p>
         </div>
-        <nav
-          class="border-b-accent col-span-12 flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
-        >
-          <a href="">O mně</a>
-          <a href="">O mně</a>
-          <a href="">O mně</a>
-          <a href="">O mně</a>
-        </nav>
       </footer>
     </main>
   </body>
