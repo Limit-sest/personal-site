@@ -1,0 +1,35 @@
+---
+import Layout from "./Layout.astro";
+import { Picture } from "astro:assets";
+const { frontmatter } = Astro.props;
+
+const cover = () => import(frontmatter.image);
+---
+
+<Layout
+  header="Projekty"
+  subheader={frontmatter.name}
+  displayProject="true"
+  lang="cs"
+>
+  <article>
+    <header>
+      <Picture
+        src={cover()}
+        alt={`${frontmatter.name} header picture`}
+        class="mb-4 rounded-4xl"
+      />
+      <div class="mb-6 flex items-baseline justify-between">
+        <h1 class="font-display text-accent text-3xl">{frontmatter.name}</h1>
+        <p class="font-display text-accent text-xl">
+          {frontmatter.year}
+        </p>
+      </div>
+    </header>
+    <main
+      class="prose prose-headings:font-display prose-h1:text-accent prose-img:rounded-3xl prose-a:underline prose-a:hover:text-accent text-black"
+    >
+      <slot />
+    </main>
+  </article>
+</Layout>

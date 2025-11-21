@@ -1,7 +1,7 @@
 ---
 import "../global.css";
 
-const { header, lang } = Astro.props;
+const { header, subheader, lang, displayProject } = Astro.props;
 ---
 
 <html lang={lang}>
@@ -28,10 +28,12 @@ const { header, lang } = Astro.props;
           href="https://kucera.dev">Tonda Kučera</a
         >
         <div class="h-1 flex-1 border-b border-b-white"></div>
-        <p class="font-display text-white">{header}</p>
+        <p class="font-display text-white">
+          {header}{subheader != null && " / "}{subheader != null && subheader}
+        </p>
       </div>
       <nav
-        class="border-b-accent links flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
+        class="border-b-accent flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
       >
         <a
           href="/"
@@ -62,6 +64,17 @@ const { header, lang } = Astro.props;
           ]}>Ostatní</a
         >
       </nav>
+
+      {
+        displayProject && (
+          <a
+            href="/projects"
+            class="border-accent hover:text-accent block w-full border-b py-3 text-center font-medium transition-all duration-100 ease-in-out hover:underline"
+          >
+            ← {lang == "cs" ? "Zpátky na projekty" : "Back to projects"}
+          </a>
+        )
+      }
     </header>
     <main class="p-8">
       <slot />
