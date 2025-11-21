@@ -7,17 +7,17 @@ const projects = await getCollection("projects");
 ---
 
 <Layout header="Projekty" lang="cs">
-  <div class="grid grid-cols-1 md:grid-cols-2">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     {
       projects.map((project) => (
         <a href={`/projects/${project.id}`}>
-          <article class="hover:bg-accent/20 group relative aspect-3/2 overflow-hidden rounded-4xl bg-transparent transition-all duration-100 ease-in-out">
+          <article class="hover:bg-accent/20 group relative aspect-3/2 overflow-hidden rounded-3xl bg-transparent transition-all duration-100 ease-in-out">
             <Picture
               src={project.data.image}
               alt={project.data.name}
               class="absolute top-0 -z-10 h-full transition-all duration-100 ease-in-out group-hover:scale-105"
             />
-            <header class="absolute bottom-0 flex flex-col bg-linear-to-t from-black via-black to-transparent p-5">
+            <header class="absolute bottom-0 flex flex-col bg-linear-to-t from-black/50 via-black/50 to-transparent p-5 pt-8">
               <div class="flex items-baseline justify-between">
                 <h2 class="font-display text-xl text-white">
                   {project.data.name}
@@ -26,7 +26,9 @@ const projects = await getCollection("projects");
                   {project.data.year}
                 </p>
               </div>
-              <p class="text-sm text-white">{project.data.description}</p>
+              <p class="text-sm font-medium text-white">
+                {project.data.description}
+              </p>
             </header>
           </article>
         </a>
