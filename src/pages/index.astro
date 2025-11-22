@@ -109,12 +109,77 @@ import { Image } from "astro:assets";
 </style>
 
 <script>
+  declare global {
+    interface Window {
+      Clipboard: {
+        copy: (text: string) => void;
+      };
+    }
+  }
+
+  window.Clipboard = (function (
+    window: Window,
+    document: Document,
+    navigator: Navigator,
+  ) {
+    let textArea: HTMLTextAreaElement | null = null;
+
+    function isOS(): boolean {
+      return !!navigator.userAgent.match(/ipad|iphone/i);
+    }
+
+    function createTextArea(text: string): void {
+      textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.readOnly = true;
+      document.body.appendChild(textArea);
+    }
+
+    function selectText(): void {
+      if (!textArea) return;
+
+      if (isOS()) {
+        const range = document.createRange();
+        range.selectNodeContents(textArea);
+
+        const selection = window.getSelection();
+
+        if (selection) {
+          selection.removeAllRanges();
+          selection.addRange(range);
+          textArea.setSelectionRange(0, 999999);
+        }
+      } else {
+        textArea.select();
+      }
+    }
+
+    function copyToClipboard(): void {
+      document.execCommand("copy");
+
+      if (textArea && document.body.contains(textArea)) {
+        document.body.removeChild(textArea);
+        textArea = null;
+      }
+    }
+
+    const copy = function (text: string): void {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy,
+    };
+  })(window, document, navigator);
+
   const copyElements = document.querySelectorAll(".copy");
 
   async function handleClick(event: Event) {
     const clickedElement = event.currentTarget as Element;
     const data = clickedElement?.getAttribute("data-copy");
-    if (data) await navigator.clipboard.writeText(data);
+    Clipboard.copy(data);
     const img = clickedElement?.querySelector("img");
     if (img) {
       img.src = "/copy-icons/check.png";
