@@ -1,0 +1,10 @@
+name: Let's study
+description: ls desc
+collections:
+  - images:
+      - /src/data/graphics/lets-study/pf2025/post1.png
+      - /src/data/graphics/lets-study/pf2025/post2.png
+      - /src/data/graphics/lets-study/pf2025/post3.png
+      - /src/data/graphics/lets-study/pf2025/post4.png
+      - /src/data/graphics/lets-study/pf2025/post5.png
+      - /src/data/graphics/lets-study/pf2025/post6.png
