@@ -6,33 +6,33 @@ import { Picture } from "astro:assets";
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.priority.valueOf() - a.data.priority.valueOf(),
 );
+console.log(projects);
 ---
 
 <Layout header="Projekty" lang="cs">
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
     {
       projects.map((project) => (
-        <a href={`/projects/${project.id}`}>
-          <article class="hover:bg-accent/20 group relative aspect-3/2 overflow-hidden rounded-3xl bg-transparent transition-all duration-100 ease-in-out">
+        <a
+          href={`/projects/${project.id}`}
+          class="border-accent group flex flex-col overflow-hidden rounded-3xl border"
+        >
+          <article class="z-10 aspect-3/2 overflow-hidden rounded-b-3xl">
             <Picture
               src={project.data.image}
               alt={project.data.name}
-              class="absolute top-0 -z-10 h-full transition-all duration-100 ease-in-out group-hover:scale-105"
+              class="-z-10 h-full transition-all duration-100 ease-in-out group-hover:scale-105"
             />
-            <header class="absolute bottom-0 flex flex-col bg-linear-to-t from-black/50 via-black/50 to-transparent p-5 pt-8">
-              <div class="flex items-baseline justify-between">
-                <h2 class="font-display text-xl text-white">
-                  {project.data.name}
-                </h2>
-                <p class="font-display text-sm text-white">
-                  {project.data.year}
-                </p>
-              </div>
-              <p class="text-sm font-medium text-white">
-                {project.data.description}
-              </p>
-            </header>
           </article>
+          <header class="group-hover:text-accent flex flex-col p-4 pt-3 transition-all duration-100 ease-in-out">
+            <div class="flex items-baseline justify-between">
+              <h2 class="font-display text-xl group-hover:underline">
+                {project.data.name}
+              </h2>
+              <p class="font-display text-sm">{project.data.year}</p>
+            </div>
+            <p class="text-sm font-medium">{project.data.description}</p>
+          </header>
         </a>
       ))
     }

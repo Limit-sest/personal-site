@@ -19,11 +19,29 @@ const cover = () => import(frontmatter.image);
         alt={`${frontmatter.name} header picture`}
         class="mb-4 rounded-4xl"
       />
-      <div class="mb-6 flex items-baseline justify-between">
+      <div class="mb-2 flex items-baseline justify-between">
         <h1 class="font-display text-accent text-3xl">{frontmatter.name}</h1>
         <p class="font-display text-accent text-xl">
           {frontmatter.year}
         </p>
+      </div>
+      <div class="mb-6 grid grid-cols-3 gap-4">
+        {
+          frontmatter.links?.map(
+            (link: { url: string; name: string }, index: number) => (
+              <a
+                href={link.url}
+                class:list={[
+                  "border-accent block border px-3 py-1 text-center font-semibold transition-all duration-100 ease-in-out hover:scale-105",
+                  { "bg-accent text-white": index === 0 },
+                ]}
+                target="_blank"
+              >
+                {link.name}
+              </a>
+            ),
+          )
+        }
       </div>
     </header>
     <main

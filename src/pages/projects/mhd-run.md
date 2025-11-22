@@ -6,6 +6,11 @@ description: Webová aplikace pro akční a strategickou hru v praze.
 image: /src/data/projects/mhd-run.png
 layout: ../../layouts/ProjectLayout.astro
 priority: 9
+links:
+  - name: Demo
+    url: https://mhd-run.vercel.app
+  - name: Zdrojový kód
+    url: https://github.com/Limit-sest/mhd-run
 ---
 This is a terminal application for simulating the solar system, made for the Siege hackclub event.
 ## head 2
