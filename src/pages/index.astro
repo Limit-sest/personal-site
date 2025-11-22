@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import copyImg from "../assets/icons/copy.png";
 ---
 
 <Layout header="O mně" lang="cs">
@@ -25,23 +24,25 @@ import copyImg from "../assets/icons/copy.png";
         </li>
         <li>
           Discordu, jako <p
-            class="text-accent inline cursor-pointer font-medium"
+            class="text-accent copy inline cursor-pointer font-medium"
+            data-copy="@limit6"
           >
-            @limit6<Image
-              src={copyImg}
+            @limit6<img
+              src="/copy-icons/copy.png"
               alt=""
-              class="copy ml-1 inline h-6 w-6 align-text-top"
+              class="ml-1 inline h-6 w-6 align-text-top"
             />
           </p>
         </li>
         <li>
           Nebo mi napiš email na <p
-            class="text-accent inline cursor-pointer font-medium"
+            class="text-accent copy inline cursor-pointer font-medium"
+            data-copy="tonda@kucera.dev"
           >
-            tonda@kucera.dev<Image
-              src={copyImg}
+            tonda@kucera.dev<img
+              src="/copy-icons/copy.png"
               alt=""
-              class="copy ml-1 inline h-6 w-6 align-text-top"
+              class="ml-1 inline h-6 w-6 align-text-top"
             />
           </p>
         </li>
@@ -85,7 +86,7 @@ import copyImg from "../assets/icons/copy.png";
   li {
     padding-left: 12px;
   }
-  img.copy {
+  .copy img {
     filter: invert(11%) sepia(74%) saturate(5852%) hue-rotate(229deg)
       brightness(99%) contrast(110%);
   }
@@ -96,7 +97,7 @@ import copyImg from "../assets/icons/copy.png";
   Retrieved 2025-11-22, License - CC BY-SA 4.0
   */
 
-  img.copy {
+  .copy img {
     image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
     image-rendering: -moz-crisp-edges; /* Firefox                        */
     image-rendering: -o-crisp-edges; /* Opera                          */
@@ -106,3 +107,24 @@ import copyImg from "../assets/icons/copy.png";
     -ms-interpolation-mode: nearest-neighbor; /* IE8+                           */
   }
 </style>
+
+<script>
+  const copyElements = document.querySelectorAll(".copy");
+
+  async function handleClick(event: Event) {
+    const clickedElement = event.currentTarget as Element;
+    const data = clickedElement?.getAttribute("data-copy");
+    if (data) await navigator.clipboard.writeText(data);
+    const img = clickedElement?.querySelector("img");
+    if (img) {
+      img.src = "/copy-icons/check.png";
+      setTimeout(() => {
+        img.src = "/copy-icons/copy.png";
+      }, 3000);
+    }
+  }
+
+  copyElements.forEach((e) => {
+    e.addEventListener("click", handleClick);
+  });
+</script>
