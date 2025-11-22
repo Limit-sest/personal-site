@@ -63,13 +63,6 @@ const { header, subheader, lang, displayProject } = Astro.props;
             { "font-display": header === "Grafika" },
           ]}>Grafika</a
         >
-        <a
-          href="/other"
-          class:list={[
-            "hover:text-accent hover:underline",
-            { "font-display": header === "Ostatní" },
-          ]}>Ostatní</a
-        >
       </div>
       {
         displayProject && (
