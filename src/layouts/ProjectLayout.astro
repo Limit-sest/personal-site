@@ -30,7 +30,7 @@ const cover = images[frontmatter.image].default;
           {frontmatter.year}
         </p>
       </div>
-      <div class="mb-6 grid grid-cols-3 gap-4">
+      <div class="mb-6 grid grid-cols-2 gap-4 md:grid-cols-3">
         {
           frontmatter.links?.map(
             (link: { url: string; name: string }, index: number) => (
