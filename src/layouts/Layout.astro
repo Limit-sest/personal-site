@@ -22,8 +22,8 @@ const { header, subheader, lang, displayProject } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body class="border-accent mx-auto max-w-2xl border">
-    <header>
+  <body class="border-accent relative mx-auto max-w-2xl border">
+    <header class="">
       <div
         class="bg-accent flex items-center-safe justify-between gap-2 px-6 py-3"
       >
@@ -36,7 +36,10 @@ const { header, subheader, lang, displayProject } = Astro.props;
           {header}{subheader != null && " / "}{subheader != null && subheader}
         </p>
       </div>
-      <nav
+    </header>
+
+    <nav class="sticky top-0 z-20 bg-white">
+      <div
         class="border-b-accent flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
       >
         <a
@@ -67,8 +70,7 @@ const { header, subheader, lang, displayProject } = Astro.props;
             { "font-display": header === "Ostatní" },
           ]}>Ostatní</a
         >
-      </nav>
-
+      </div>
       {
         displayProject && (
           <a
@@ -79,7 +81,8 @@ const { header, subheader, lang, displayProject } = Astro.props;
           </a>
         )
       }
-    </header>
+    </nav>
+
     <main class="p-8">
       <slot />
     </main>

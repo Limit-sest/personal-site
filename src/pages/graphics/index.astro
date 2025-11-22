@@ -11,11 +11,11 @@ const graphics = await getCollection("graphics");
     graphics.map((project) => (
       <section class="flex w-full flex-col">
         <div class="border-accent mb-2 flex items-baseline justify-between border-b">
-          <h2 class="text-accent font-display text-4xl">{project.data.name}</h2>
-          <p class="text-accent font-display text-2xl">{project.data.year}</p>
+          <h2 class="text-accent font-display text-3xl">{project.data.name}</h2>
+          <p class="text-accent font-display text-xl">{project.data.year}</p>
         </div>
         <p class="mb-4 text-lg leading-tight">{project.data.description}</p>
-        <div class="grid w-full grid-cols-1 grid-rows-4 items-center-safe justify-center-safe gap-2 sm:grid-cols-3">
+        <div class="grid w-full grid-cols-1 items-center-safe justify-center-safe gap-2 sm:grid-cols-3">
           {project.data.images?.map((image) => (
             <div
               class="flex h-full w-full items-center justify-center"
