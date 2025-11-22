@@ -24,8 +24,8 @@ const projects = defineCollection({
 
 const graphics = defineCollection({
   loader: glob({
-    pattern: "index.yaml",
-    base: "./src/assets/graphics/lets-study",
+    pattern: "**/index.yaml",
+    base: "./src/assets/graphics",
   }),
   schema: ({ image }) =>
     z.object({
