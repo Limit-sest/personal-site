@@ -3,7 +3,12 @@ import Layout from "./Layout.astro";
 import { Picture } from "astro:assets";
 const { frontmatter } = Astro.props;
 
-const cover = () => import(frontmatter.image);
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/data/projects/*.{png,jpg,jpeg,gif,webp}",
+  { eager: true },
+);
+
+const cover = images[frontmatter.image].default;
 ---
 
 <Layout
@@ -15,7 +20,7 @@ const cover = () => import(frontmatter.image);
   <article>
     <header>
       <Picture
-        src={cover()}
+        src={cover}
         alt={`${frontmatter.name} header picture`}
         class="mb-4 rounded-4xl"
       />
