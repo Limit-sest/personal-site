@@ -31,14 +31,16 @@ const graphics = defineCollection({
     z.object({
       name: z.string(),
       description: z.string().optional(),
-      collections: z
+      year: z.number().optional(),
+      images: z
         .array(
           z.object({
-            images: z.array(image()),
+            path: image(),
+            colspan: z.number().max(3).default(1),
+            rowspan: z.number().max(3).default(1),
           }),
         )
         .optional(),
-      images: z.array(image()).optional(),
     }),
 });
 

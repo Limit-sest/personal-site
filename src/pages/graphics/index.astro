@@ -7,29 +7,25 @@ const graphics = await getCollection("graphics");
 ---
 
 <Layout header="Grafika" lang="cs">
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-    {
-      graphics.map((project) => (
-        <section class="flex flex-col">
-          <h2>{project.data.name}</h2>
-          <!-- <article class="z-10 aspect-3/2 overflow-hidden rounded-b-3xl">
-            <Picture
-              src={project.data.image}
-              alt=""
-              class="-z-10 h-full transition-all duration-100 ease-in-out group-hover:scale-105"
-            />
-          </article> -->
-          <header class="group-hover:text-accent flex flex-col p-4 pt-3 transition-all duration-100 ease-in-out">
-            <div class="flex items-baseline justify-between">
-              <h2 class="font-display text-xl group-hover:underline">
-                {project.data.name}
-              </h2>
-              <p class="font-display text-sm">{project.data.year}</p>
+  {
+    graphics.map((project) => (
+      <section class="flex w-full flex-col">
+        <h2>{project.data.name}</h2>
+        <div class="grid w-full grid-cols-1 grid-rows-4 items-center-safe justify-center-safe gap-2 sm:grid-cols-3">
+          {project.data.images?.map((image) => (
+            <div
+              class="flex h-full w-full items-center justify-center"
+              style={`grid-row: auto / span ${image.rowspan}; grid-column: auto / span ${image.colspan}; aspect-ratio: ${image.colspan}/${image.rowspan}`}
+            >
+              <Picture
+                src={image.path}
+                alt=""
+                class="block h-full rounded-3xl object-cover"
+              />
             </div>
-            <p class="text-sm font-medium">{project.data.description}</p>
-          </header>
-        </section>
-      ))
-    }
-  </div>
+          ))}
+        </div>
+      </section>
+    ))
+  }
 </Layout>

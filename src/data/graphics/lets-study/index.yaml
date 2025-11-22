@@ -1,10 +1,10 @@
 name: Let's study
 description: ls desc
-collections:
-  - images:
-      - /src/data/graphics/lets-study/pf2025/post1.png
-      - /src/data/graphics/lets-study/pf2025/post2.png
-      - /src/data/graphics/lets-study/pf2025/post3.png
-      - /src/data/graphics/lets-study/pf2025/post4.png
-      - /src/data/graphics/lets-study/pf2025/post5.png
-      - /src/data/graphics/lets-study/pf2025/post6.png
+year: 2025
+images:
+  - path: /src/data/graphics/lets-study/header.png
+    colspan: 3
+    rowspan: 1
+  - path: /src/data/graphics/lets-study/pf2025/post3.png
+  - path: /src/data/graphics/lets-study/pf2025/post5.png
+  - path: /src/data/graphics/lets-study/pf2025/post4.png
