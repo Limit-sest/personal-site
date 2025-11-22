@@ -2,9 +2,9 @@ name: Let's study
 description: Let's Study je projekt, který od roku 2021 pomáhá studentům s učením. Pro něj jsem vytvářel grafické příspěvky na Instagram a Discord.
 year: 2025
 images:
-  - path: /src/data/graphics/lets-study/header.png
+  - path: /src/assets/graphics/lets-study/header.png
     colspan: 3
     rowspan: 1
-  - path: /src/data/graphics/lets-study/post3.png
-  - path: /src/data/graphics/lets-study/post5.png
-  - path: /src/data/graphics/lets-study/post4.png
+  - path: /src/assets/graphics/lets-study/post3.png
+  - path: /src/assets/graphics/lets-study/post5.png
+  - path: /src/assets/graphics/lets-study/post4.png

@@ -4,7 +4,7 @@ import { Picture } from "astro:assets";
 const { frontmatter } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/data/projects/*.{png,jpg,jpeg,gif,webp}",
+  "/src/assets/projects/*.{png,jpg,jpeg,gif,webp}",
   { eager: true },
 );
 

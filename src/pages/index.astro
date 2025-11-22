@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import copyImg from "../assets/icons/copy.png";
 ---
 
 <Layout header="O mně" lang="cs">
@@ -25,8 +27,8 @@ import Layout from "../layouts/Layout.astro";
           Discordu, jako <p
             class="text-accent inline cursor-pointer font-medium"
           >
-            @limit6<img
-              src="@assets/icons/copy.png"
+            @limit6<Image
+              src={copyImg}
               alt=""
               class="copy ml-1 inline h-6 w-6 align-text-top"
             />
@@ -36,8 +38,8 @@ import Layout from "../layouts/Layout.astro";
           Nebo mi napiš email na <p
             class="text-accent inline cursor-pointer font-medium"
           >
-            tonda@kucera.dev<img
-              src="@assets/icons/copy.png"
+            tonda@kucera.dev<Image
+              src={copyImg}
               alt=""
               class="copy ml-1 inline h-6 w-6 align-text-top"
             />
