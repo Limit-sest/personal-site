@@ -1,11 +1,21 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+:root {
+  --accent: hsl(226, 100%, 41%);
+}
+
+.dark {
+  --accent: hsl(220, 100%, 61%);
+}
+
 @theme {
-  --color-accent: rgb(0, 49, 211);
+  --color-accent: var(--accent);
   --font-sans: "DM Sans", sans-serif;
   --font-display: "ClashDisplay-Semibold", sans-serif;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
   font-family: "ClashDisplay-Semibold";
@@ -80,4 +90,21 @@
   font-weight: 600;
   font-display: swap;
   font-style: italic;
+}
+
+/*
+Source - https://stackoverflow.com/a
+Posted by Vargr, modified by community. See post 'Timeline' for change history
+Retrieved 2025-11-22, License - CC BY-SA 4.0
+*/
+
+.pixelated img,
+img.pixelated {
+  image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
+  image-rendering: -moz-crisp-edges; /* Firefox                        */
+  image-rendering: -o-crisp-edges; /* Opera                          */
+  image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+  image-rendering: pixelated; /* Universal support since 2021   */
+  image-rendering: optimize-contrast; /* CSS3 Proposed                  */
+  -ms-interpolation-mode: nearest-neighbor; /* IE8+                           */
 }

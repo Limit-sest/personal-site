@@ -27,9 +27,9 @@ import Layout from "../layouts/Layout.astro";
             data-copy="@limit6"
           >
             @limit6<img
-              src="/copy-icons/copy.png"
+              src="/icons/copy.png"
               alt=""
-              class="ml-1 inline h-6 w-6 align-text-top"
+              class="pixelated ml-1 inline h-6 w-6 align-text-top"
             />
           </p>
         </li>
@@ -39,9 +39,9 @@ import Layout from "../layouts/Layout.astro";
             data-copy="tonda@kucera.dev"
           >
             tonda@kucera.dev<img
-              src="/copy-icons/copy.png"
+              src="/icons/copy.png"
               alt=""
-              class="ml-1 inline h-6 w-6 align-text-top"
+              class="pixelated ml-1 inline h-6 w-6 align-text-top"
             />
           </p>
         </li>
@@ -85,25 +85,17 @@ import Layout from "../layouts/Layout.astro";
   li {
     padding-left: 12px;
   }
+</style>
+
+<style is:inline>
   .copy img {
     filter: invert(11%) sepia(74%) saturate(5852%) hue-rotate(229deg)
       brightness(99%) contrast(110%);
   }
 
-  /*
-  Source - https://stackoverflow.com/a
-  Posted by Vargr, modified by community. See post 'Timeline' for change history
-  Retrieved 2025-11-22, License - CC BY-SA 4.0
-  */
-
-  .copy img {
-    image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
-    image-rendering: -moz-crisp-edges; /* Firefox                        */
-    image-rendering: -o-crisp-edges; /* Opera                          */
-    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-    image-rendering: pixelated; /* Universal support since 2021   */
-    image-rendering: optimize-contrast; /* CSS3 Proposed                  */
-    -ms-interpolation-mode: nearest-neighbor; /* IE8+                           */
+  .dark .copy img {
+    filter: invert(40%) sepia(69%) saturate(3315%) hue-rotate(210deg)
+      brightness(102%) contrast(100%);
   }
 </style>
 

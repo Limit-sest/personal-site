@@ -4,7 +4,7 @@ import "../global.css";
 const { header, subheader, lang, displayProject } = Astro.props;
 ---
 
-<html lang={lang}>
+<html lang={lang} class="bg-[#F7F4F0] dark:bg-[#111116] dark:text-neutral-50">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -31,11 +31,11 @@ const { header, subheader, lang, displayProject } = Astro.props;
         </p>
       </div>
     </header>
+  </body>
 
-    <nav class="sticky top-0 z-20 bg-white">
-      <div
-        class="border-b-accent flex items-center-safe justify-evenly gap-2 border-b px-6 py-3"
-      >
+  <nav class="sticky top-0 z-20 bg-[#F7F4F0] dark:bg-[#111116]">
+    <div class="border-b-accent flex border-b px-6 py-3">
+      <div class="flex flex-1 items-center-safe justify-evenly gap-2">
         <a
           href="/"
           class:list={[
@@ -58,29 +58,65 @@ const { header, subheader, lang, displayProject } = Astro.props;
           ]}>Grafika</a
         >
       </div>
-      {
-        displayProject && (
-          <a
-            href="/projects"
-            class="border-accent hover:text-accent block w-full border-b py-3 text-center font-medium transition-all duration-100 ease-in-out hover:underline"
-          >
-            ← {lang == "cs" ? "Zpátky na projekty" : "Back to projects"}
-          </a>
-        )
-      }
-    </nav>
-
-    <main class="p-8">
-      <slot />
-    </main>
-    <footer>
-      <div
-        class="border-t-accent text-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3 font-medium"
+      <button id="theme-switch" role="none" class="ml-2 h-6 w-6 cursor-pointer"
+        ><img src="/icons/sun.png" alt="theme switcher icon" /></button
       >
-        <p>&copy;Tonda Kučera 2025</p>
-        <div class="border-b-accent h-1 flex-1 border-b"></div>
-        <p>Vytvořeno bez AI.</p>
-      </div>
-    </footer>
-  </body>
+    </div>
+    {
+      displayProject && (
+        <a
+          href="/projects"
+          class="border-accent hover:text-accent block w-full border-b py-3 text-center font-medium transition-all duration-100 ease-in-out hover:underline"
+        >
+          ← {lang == "cs" ? "Zpátky na projekty" : "Back to projects"}
+        </a>
+      )
+    }
+  </nav>
+
+  <main class="p-8">
+    <slot />
+  </main>
+  <footer>
+    <div
+      class="border-t-accent text-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3 font-medium"
+    >
+      <p>&copy;Tonda Kučera 2025</p>
+      <div class="border-b-accent h-1 flex-1 border-b"></div>
+      <p>Vytvořeno bez AI.</p>
+    </div>
+  </footer>
 </html>
+
+<script is:inline>
+  const themeSwitch = document.querySelector("#theme-switch");
+  const themeSwitchImg = themeSwitch.querySelector("img");
+
+  function updateColorScheme() {
+    const isDark =
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", isDark);
+    if (isDark) themeSwitchImg.src = "/icons/moon.png";
+    else themeSwitchImg.src = "/icons/sun.png";
+  }
+
+  themeSwitch.addEventListener("click", () => {
+    const isDark =
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    localStorage.theme = isDark ? "light" : "dark";
+    updateColorScheme();
+  });
+
+  updateColorScheme();
+</script>
+
+<style>
+  .dark #theme-switch img {
+    filter: invert(99%) sepia(99%) saturate(0%) hue-rotate(153deg)
+      brightness(109%) contrast(100%);
+  }
+</style>
