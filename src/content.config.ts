@@ -10,6 +10,7 @@ const projects = defineCollection({
       year: z.number(),
       description: z.string(),
       image: image(),
+      priority: z.number(),
     }),
 });
 

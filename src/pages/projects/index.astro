@@ -3,7 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.priority.valueOf() - a.data.priority.valueOf(),
+);
 ---
 
 <Layout header="Projekty" lang="cs">

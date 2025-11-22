@@ -5,6 +5,7 @@ year: 2025
 description: Webová aplikace pro akční a strategickou hru v praze.
 image: /src/data/projects/mhd-run.png
 layout: ../../layouts/ProjectLayout.astro
+priority: 9
 ---
 This is a terminal application for simulating the solar system, made for the Siege hackclub event.
 ## head 2
