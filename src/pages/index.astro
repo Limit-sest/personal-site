@@ -173,9 +173,9 @@ import Layout from "../layouts/Layout.astro";
     Clipboard.copy(data);
     const img = clickedElement?.querySelector("img");
     if (img) {
-      img.src = "/copy-icons/check.png";
+      img.src = "/icons/check.png";
       setTimeout(() => {
-        img.src = "/copy-icons/copy.png";
+        img.src = "/icons/copy.png";
       }, 3000);
     }
   }
