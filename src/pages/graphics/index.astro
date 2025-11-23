@@ -6,7 +6,11 @@ import { Picture } from "astro:assets";
 const graphics = await getCollection("graphics");
 ---
 
-<Layout header="Grafika" lang="cs">
+<Layout
+  header="Grafika"
+  lang="cs"
+  description="Přehled grafiky, kterou jsem vytvořil."
+>
   {
     graphics.map((project) => (
       <section class="flex w-full flex-col">
