@@ -7,14 +7,17 @@ const { header, subheader, lang, displayProject } = Astro.props;
 <html lang={lang} class="bg-[#F7F4F0] dark:bg-[#111116] dark:text-neutral-50">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>
-      Tonda / {header}{subheader != null && " / "}{
+      Tonda Kučera / {header}{subheader != null && " / "}{
         subheader != null && subheader
       }
     </title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body class="border-accent relative mx-auto max-w-2xl border">
     <header class="">
