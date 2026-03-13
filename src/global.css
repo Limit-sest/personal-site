@@ -6,13 +6,13 @@
 }
 
 .dark {
-  --accent: hsl(220, 100%, 61%);
+  --accent: hsl(220, 80%, 61%);
 }
 
 @theme {
   --color-accent: var(--accent);
   --font-sans: "DM Sans", sans-serif;
-  --font-display: "ClashDisplay-Semibold", sans-serif;
+  --font-display: "Agrandir", "ClashDisplay-Semibold", sans-serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -30,7 +30,9 @@
 
 @font-face {
   font-family: "DM Sans";
-  src: url("../fonts/DMSans-Regular.ttf") format("truetype");
+  src:
+    url("../fonts/DMSans-Regular.woff2") format("woff2"),
+    url("../fonts/DMSans-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -45,51 +47,13 @@
 }
 
 @font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/DMSans-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/DMSans-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/DMSans-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/DMSans-MediumItalic.ttf") format("truetype");
-  font-weight: 500;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/DMSans-SemiBold.ttf") format("truetype");
+  font-family: "Agrandir";
+  src:
+    url("../fonts/PPAgrandir-GrandHeavy.woff2") format("woff2"),
+    url("../fonts/PPAgrandir-GrandHeavy.otf") format("opentype");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src: url("../fonts/DMSans-SemiBoldItalic.ttf") format("truetype");
-  font-weight: 600;
-  font-display: swap;
-  font-style: italic;
 }
 
 /*
