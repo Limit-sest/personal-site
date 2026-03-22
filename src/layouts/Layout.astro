@@ -20,7 +20,7 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     {description && <meta name="description" content={description} />}
   </head>
-  <body class="border-accent relative mx-auto max-w-2xl border">
+  <body class="border-accent relative mx-auto mb-8 max-w-2xl border">
     <header class="">
       <div
         class="bg-accent flex items-center-safe justify-between gap-2 px-6 py-3"
@@ -35,61 +35,64 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
         </p>
       </div>
     </header>
-  </body>
 
-  <nav class="sticky top-0 z-20 bg-[#F7F4F0] dark:bg-[#111116]">
-    <div class="border-b-accent flex border-b px-6 py-3">
-      <div class="flex flex-1 items-center-safe justify-evenly gap-2">
-        <a
-          href="/"
-          class:list={[
-            "hover:text-accent hover:underline",
-            { "font-display": header === "O mně" },
-          ]}>O mně</a
-        >
-        <a
-          href="/projects"
-          class:list={[
-            "hover:text-accent hover:underline",
-            { "font-display": header === "Projekty" },
-          ]}>Projekty</a
-        >
-        <a
-          href="/graphics"
-          class:list={[
-            "hover:text-accent hover:underline",
-            { "font-display": header === "Grafika" },
-          ]}>Grafika</a
+    <nav class="sticky top-0 z-20 bg-[#F7F4F0] dark:bg-[#111116]">
+      <div class="border-b-accent flex border-b px-6 py-3">
+        <div class="flex flex-1 items-center-safe justify-evenly gap-2">
+          <a
+            href="/"
+            class:list={[
+              "hover:text-accent hover:underline",
+              { "font-display": header === "O mně" },
+            ]}>O mně</a
+          >
+          <a
+            href="/projects"
+            class:list={[
+              "hover:text-accent hover:underline",
+              { "font-display": header === "Projekty" },
+            ]}>Projekty</a
+          >
+          <a
+            href="/graphics"
+            class:list={[
+              "hover:text-accent hover:underline",
+              { "font-display": header === "Grafika" },
+            ]}>Grafika</a
+          >
+        </div>
+        <button
+          id="theme-switch"
+          role="none"
+          class="ml-2 h-6 w-6 cursor-pointer"
+          ><img src="/icons/sun.png" alt="theme switcher icon" /></button
         >
       </div>
-      <button id="theme-switch" role="none" class="ml-2 h-6 w-6 cursor-pointer"
-        ><img src="/icons/sun.png" alt="theme switcher icon" /></button
-      >
-    </div>
-    {
-      displayProject && (
-        <a
-          href="/projects"
-          class="border-accent hover:text-accent block w-full border-b py-3 text-center font-medium transition-all duration-100 ease-in-out hover:underline"
-        >
-          ← {lang == "cs" ? "Zpátky na projekty" : "Back to projects"}
-        </a>
-      )
-    }
-  </nav>
+      {
+        displayProject && (
+          <a
+            href="/projects"
+            class="border-accent hover:text-accent block w-full border-b py-3 text-center font-medium transition-all duration-100 ease-in-out hover:underline"
+          >
+            ← {lang == "cs" ? "Zpátky na projekty" : "Back to projects"}
+          </a>
+        )
+      }
+    </nav>
 
-  <main class="p-8">
-    <slot />
-  </main>
-  <footer>
-    <div
-      class="border-t-accent text-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3 font-medium"
-    >
-      <p>&copy;Tonda Kučera 2025</p>
-      <div class="border-b-accent h-1 flex-1 border-b"></div>
-      <a>Credits</a>
-    </div>
-  </footer>
+    <main class="p-8">
+      <slot />
+    </main>
+    <footer>
+      <div
+        class="border-t-accent text-accent flex items-center-safe justify-between gap-2 border-t px-6 py-3 font-medium"
+      >
+        <p>&copy;Tonda Kučera 2025</p>
+        <div class="border-b-accent h-1 flex-1 border-b"></div>
+        <a>Credits</a>
+      </div>
+    </footer>
+  </body>
 </html>
 
 <script is:inline>
