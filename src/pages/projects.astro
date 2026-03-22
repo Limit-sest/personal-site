@@ -28,12 +28,10 @@ const projects = (await getCollection("projects")).sort(
               class="-z-10 h-full"
             />
           </div>
-          <p class="mx-auto mt-6 max-w-md font-medium hyphens-auto">
-            {project.data.description} Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Nobis laboriosam tempora dolor consequatur neque
-            tempore soluta, eos sapiente, nisi cum totam veniam velit officiis
-            iste vitae omnis? Nesciunt, voluptates temporibus!
-          </p>
+          <p
+            class="mx-auto mt-6 max-w-md font-medium hyphens-auto"
+            set:html={project.data.description}
+          />
           <div class="button-container mx-auto mt-8 w-full max-w-md gap-3">
             {project.data.links?.map(
               (link: { url: string; name: string }, index: number) => (
