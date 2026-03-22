@@ -13,26 +13,56 @@ const projects = (await getCollection("projects")).sort(
   lang="cs"
   description="Seznam projektů, které jsem vytvořil nebo se na nich podílel."
 >
-  <div class="flex flex-col gap-4">
+  <div class="mt-8 flex flex-col gap-48">
     {
       projects.map((project) => (
-        <div class="group flex flex-col overflow-hidden rounded-3xl">
-          <article class="z-10 aspect-3/2 overflow-hidden rounded-b-3xl">
+        <article class="group flex flex-col">
+          <h1 class="hidden">{project.data.name}</h1>
+          <p class="font-display text-accent mb-4 text-center text-sm">
+            {project.data.year}
+          </p>
+          <div class="z-10">
             <Picture
               src={project.data.image}
               alt={project.data.name}
               class="-z-10 h-full"
             />
-          </article>
-          <header class="flex flex-col p-4 pt-3">
-            <div class="flex items-baseline justify-between">
-              <h2 class="font-display text-xl">{project.data.name}</h2>
-              <p class="font-display text-sm">{project.data.year}</p>
-            </div>
-            <p class="text-sm font-medium">{project.data.description}</p>
-          </header>
-        </div>
+          </div>
+          <p class="mx-auto mt-6 max-w-md font-medium hyphens-auto">
+            {project.data.description} Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Nobis laboriosam tempora dolor consequatur neque
+            tempore soluta, eos sapiente, nisi cum totam veniam velit officiis
+            iste vitae omnis? Nesciunt, voluptates temporibus!
+          </p>
+          <div class="button-container mx-auto mt-8 w-full max-w-md gap-3">
+            {project.data.links?.map(
+              (link: { url: string; name: string }, index: number) => (
+                <a
+                  href={link.url}
+                  class:list={[
+                    "border-accent hover:bg-accent/10 block border px-3 py-1 text-center lowercase shadow transition-all duration-100 ease-in-out hover:-translate-0.5",
+                    {
+                      "bg-accent hover:bg-accent/100 text-white hover:brightness-125":
+                        index === 0,
+                    },
+                  ]}
+                  target="_blank"
+                >
+                  <span class="font-semibold italic">{link.name}</span> ↗
+                </a>
+              ),
+            )}
+          </div>
+        </article>
       ))
     }
   </div>
 </Layout>
+
+<style>
+  .button-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+</style>
