@@ -13,7 +13,7 @@ const projects = (await getCollection("projects")).sort(
   lang="cs"
   description="Seznam projektů, které jsem vytvořil nebo se na nich podílel."
 >
-  <div class="mt-8 flex flex-col gap-48">
+  <div class="my-8 flex flex-col gap-48">
     {
       projects.map((project) => (
         <article class="group flex flex-col">
