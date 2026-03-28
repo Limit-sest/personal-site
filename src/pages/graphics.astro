@@ -20,18 +20,28 @@ const graphics = await getCollection("graphics");
         </div>
         <p class="mb-4 text-lg leading-tight">{project.data.description}</p>
         <div class="grid w-full grid-cols-1 items-center-safe justify-center-safe gap-2 sm:grid-cols-3">
-          {project.data.images?.map((image) => (
-            <div
-              class="flex h-full w-full items-center justify-center"
-              style={`grid-row: auto / span ${image.rowspan}; grid-column: auto / span ${image.colspan}; aspect-ratio: ${image.colspan}/${image.rowspan}`}
-            >
-              <Picture
-                src={image.path}
-                alt=""
-                class="block h-full rounded-3xl object-cover"
-              />
-            </div>
-          ))}
+          {project.data.images?.map((image) => {
+            const desktopWidth =
+              image.colspan === 3 ? "606px" :
+              image.colspan === 2 ? "402px" : "197px";
+            const sizes = `(min-width: 640px) ${desktopWidth}, calc(100vw - 66px)`;
+            return (
+              <div
+                class="flex h-full w-full items-center justify-center"
+                style={`grid-row: auto / span ${image.rowspan}; grid-column: auto / span ${image.colspan}; aspect-ratio: ${image.colspan}/${image.rowspan}`}
+              >
+                <Picture
+                  src={image.path}
+                  alt=""
+                  class="block h-full rounded-3xl object-cover"
+                  widths={[200, 400, 608, 1216]}
+                  sizes={sizes}
+                  formats={["avif", "webp"]}
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
         </div>
       </section>
     ))

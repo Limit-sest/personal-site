@@ -15,7 +15,7 @@ const projects = (await getCollection("projects")).sort(
 >
   <div class="my-8 flex flex-col gap-48">
     {
-      projects.map((project) => (
+      projects.map((project, index) => (
         <article class="group flex flex-col">
           <h1 class="hidden">{project.data.name}</h1>
           <p class="font-display text-accent mb-4 text-center text-sm">
@@ -26,6 +26,7 @@ const projects = (await getCollection("projects")).sort(
               src={project.data.image}
               alt={project.data.name}
               class="-z-10 h-full"
+              loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
           <p
