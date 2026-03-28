@@ -2,13 +2,15 @@ import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
 
 const projects = defineCollection({
-  loader: file("./src/assets/projects/projects.json"),
+  loader: glob({
+    pattern: "*.mdx",
+    base: "./src/assets/projects",
+  }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
       tags: z.array(z.string()),
       year: z.number(),
-      description: z.string(),
       image: image(),
       priority: z.number(),
       links: z

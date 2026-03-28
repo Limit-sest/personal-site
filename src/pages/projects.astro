@@ -1,10 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { Picture } from "astro:assets";
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.priority - a.data.priority,
+);
+
+const renderedProjects = await Promise.all(
+  projects.map(async (p) => ({ ...p, Content: (await render(p)).Content })),
 );
 ---
 
@@ -15,26 +19,25 @@ const projects = (await getCollection("projects")).sort(
 >
   <div class="my-8 flex flex-col gap-48">
     {
-      projects.map((project, index) => (
+      renderedProjects.map(({ data, Content }, index) => (
         <article class="group flex flex-col">
-          <h1 class="hidden">{project.data.name}</h1>
+          <h1 class="hidden">{data.name}</h1>
           <p class="font-display text-accent mb-4 text-center text-sm">
-            {project.data.year}
+            {data.year}
           </p>
           <div class="z-10">
             <Picture
-              src={project.data.image}
-              alt={project.data.name}
+              src={data.image}
+              alt={data.name}
               class="-z-10 h-full"
               loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
-          <p
-            class="mx-auto mt-6 max-w-md font-medium hyphens-auto"
-            set:html={project.data.description}
-          />
+          <div class="mx-auto mt-6 max-w-md font-medium hyphens-auto">
+            <Content />
+          </div>
           <div class="button-container mx-auto mt-8 w-full max-w-md gap-3">
-            {project.data.links?.map(
+            {data.links?.map(
               (link: { url: string; name: string }, index: number) => (
                 <a
                   href={link.url}
