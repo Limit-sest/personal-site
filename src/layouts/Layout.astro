@@ -61,12 +61,12 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
             ]}>Grafika</a
           >
         </div>
-        <button
+        <!-- <button
           id="theme-switch"
           role="none"
           class="ml-2 h-6 w-6 cursor-pointer"
           ><img src="/icons/sun.png" alt="theme switcher icon" /></button
-        >
+        > -->
       </div>
       {
         displayProject && (
@@ -95,7 +95,7 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
   </body>
 </html>
 
-<script is:inline>
+<!-- <script is:inline>
   const themeSwitch = document.querySelector("#theme-switch");
   const themeSwitchImg = themeSwitch.querySelector("img");
 
@@ -126,4 +126,4 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
     filter: invert(99%) sepia(99%) saturate(0%) hue-rotate(153deg)
       brightness(109%) contrast(100%);
   }
-</style>
+</style> -->
