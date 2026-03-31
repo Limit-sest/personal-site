@@ -52,12 +52,22 @@ const photos = await getCollection("photos");
     <button
       id="lightbox-close"
       class="absolute top-4 right-4 cursor-pointer text-4xl text-white"
-      aria-label="Zavřít">&times;</button
+      aria-label="Zavřít"
+      ><img
+        src="/icons/close.png"
+        alt=""
+        class="pixelated recolor-white h-12 w-12"
+      /></button
     >
     <button
       id="lightbox-prev"
-      class="absolute left-4 cursor-pointer text-4xl text-white"
-      aria-label="Předchozí">&#8249;</button
+      class="absolute left-4 cursor-pointer"
+      aria-label="Předchozí"
+      ><img
+        src="/icons/arrow-left-box.png"
+        alt=""
+        class="pixelated recolor-white h-12 w-12"
+      /></button
     >
     <img
       id="lightbox-img"
@@ -66,8 +76,13 @@ const photos = await getCollection("photos");
     />
     <button
       id="lightbox-next"
-      class="absolute right-4 cursor-pointer text-4xl text-white"
-      aria-label="Následující">&#8250;</button
+      class="absolute right-4 cursor-pointer"
+      aria-label="Následující"
+      ><img
+        src="/icons/arrow-right-box.png"
+        alt=""
+        class="pixelated recolor-white h-12 w-12"
+      /></button
     >
   </div>
 </Layout>
@@ -151,3 +166,10 @@ const photos = await getCollection("photos");
     }
   });
 </script>
+
+<style>
+  .recolor-white {
+    filter: invert(94%) sepia(8%) saturate(466%) hue-rotate(318deg)
+      brightness(106%) contrast(94%);
+  }
+</style>
