@@ -16,7 +16,7 @@ const graphics = await getCollection("graphics");
       <section class="flex w-full flex-col">
         <div class="border-accent mb-2 flex items-baseline justify-between border-b pb-0.5">
           <h2 class="text-accent font-display text-2xl">{project.data.name}</h2>
-          <p class="text-accent font-display text-lg">{project.data.year}</p>
+          <p class="text-accent text-xl">{project.data.meta}</p>
         </div>
         <p class="mb-4 text-lg leading-tight">{project.data.description}</p>
         <div class="grid w-full grid-cols-1 items-center-safe justify-center-safe gap-2 sm:grid-cols-3">

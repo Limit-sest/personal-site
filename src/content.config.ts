@@ -33,7 +33,7 @@ const graphics = defineCollection({
     z.object({
       name: z.string(),
       description: z.string().optional(),
-      year: z.number().optional(),
+      meta: z.string().optional(),
       images: z
         .array(
           z.object({
@@ -59,8 +59,6 @@ const photos = defineCollection({
         .array(
           z.object({
             path: image(),
-            colspan: z.number().max(3).default(1),
-            rowspan: z.number().max(3).default(1),
           }),
         )
         .optional(),
