@@ -1,0 +1,127 @@
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90"
+>
+  <button
+    id="lightbox-close"
+    class="absolute top-4 right-4 cursor-pointer text-4xl text-white"
+    aria-label="Zavřít"
+    ><img
+      src="/icons/close.png"
+      alt=""
+      class="pixelated recolor-white h-12 w-12"
+    /></button
+  >
+  <button
+    id="lightbox-prev"
+    class="absolute left-4 cursor-pointer"
+    aria-label="Předchozí"
+    ><img
+      src="/icons/arrow-left-box.png"
+      alt=""
+      class="pixelated recolor-white h-12 w-12"
+    /></button
+  >
+  <img
+    id="lightbox-img"
+    class="max-h-[90vh] max-w-[90vw] object-contain"
+    alt=""
+  />
+  <button
+    id="lightbox-next"
+    class="absolute right-4 cursor-pointer"
+    aria-label="Následující"
+    ><img
+      src="/icons/arrow-right-box.png"
+      alt=""
+      class="pixelated recolor-white h-12 w-12"
+    /></button
+  >
+</div>
+
+<script>
+  const lightbox = document.getElementById("lightbox")!;
+  const lightboxImg = document.getElementById(
+    "lightbox-img",
+  ) as HTMLImageElement;
+  const triggers =
+    document.querySelectorAll<HTMLButtonElement>(".lightbox-trigger");
+
+  // Build album data from triggers
+  const albums = new Map<number, string[]>();
+  triggers.forEach((t) => {
+    const albumIdx = Number(t.dataset.album);
+    if (!albums.has(albumIdx)) albums.set(albumIdx, []);
+    albums.get(albumIdx)![Number(t.dataset.index)] = t.dataset.src!;
+  });
+
+  let currentAlbum = 0;
+  let currentIndex = 0;
+
+  function show(album: number, index: number) {
+    const images = albums.get(album);
+    if (!images) return;
+    currentAlbum = album;
+    currentIndex = ((index % images.length) + images.length) % images.length;
+    lightboxImg.src = images[currentIndex];
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function hide() {
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  function navigate(delta: number) {
+    const images = albums.get(currentAlbum);
+    if (!images) return;
+    show(currentAlbum, currentIndex + delta);
+  }
+
+  triggers.forEach((t) => {
+    t.addEventListener("click", () => {
+      show(Number(t.dataset.album), Number(t.dataset.index));
+    });
+  });
+
+  document.getElementById("lightbox-close")!.addEventListener("click", hide);
+  document
+    .getElementById("lightbox-prev")!
+    .addEventListener("click", () => navigate(-1));
+  document
+    .getElementById("lightbox-next")!
+    .addEventListener("click", () => navigate(1));
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) hide();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains("hidden")) return;
+    if (e.key === "Escape") hide();
+    if (e.key === "ArrowLeft") navigate(-1);
+    if (e.key === "ArrowRight") navigate(1);
+  });
+
+  // Swipe support
+  let touchStartX = 0;
+  lightbox.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  });
+  lightbox.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) {
+      navigate(dx > 0 ? -1 : 1);
+    }
+  });
+</script>
+
+<style>
+  .recolor-white {
+    filter: invert(94%) sepia(8%) saturate(466%) hue-rotate(318deg)
+      brightness(106%) contrast(94%);
+  }
+</style>
