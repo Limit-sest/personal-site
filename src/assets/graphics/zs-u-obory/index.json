@@ -1,0 +1,14 @@
+{
+  "name": "Zprávy ze ZŠ U Obory",
+  "description": "Na základní škole jsem vytvořil miničasopis, který měl za cíl srozumitelně sdělit novinky ze školy. Protože jsem chtěl aby aktuality byly co nejvíce dostupné, postoval jsem příspěvky na Instagram <a href=\"https://www.instagram.com/zpravy.uobory/\">@zpravy.uobory</a>.",
+  "meta": "2024–25",
+  "images": [
+    { "path": "/src/assets/graphics/zs-u-obory/1.png" },
+    {
+      "path": "/src/assets/graphics/zs-u-obory/2.png",
+      "colspan": 2,
+      "rowspan": 2
+    },
+    { "path": "/src/assets/graphics/zs-u-obory/3.png" }
+  ]
+}

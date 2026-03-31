@@ -19,7 +19,10 @@ const graphics = await getCollection("graphics");
           <h2 class="text-accent font-display text-2xl">{project.data.name}</h2>
           <p class="text-accent text-xl">{project.data.meta}</p>
         </div>
-        <p class="mb-4 text-lg leading-tight">{project.data.description}</p>
+        <p
+          class="description mb-4 text-lg leading-tight"
+          set:html={project.data.description}
+        />
         <div class="grid w-full grid-cols-1 items-center-safe justify-center-safe gap-2 sm:grid-cols-3">
           {project.data.images?.map((image, imageIndex) => {
             const desktopWidth =
@@ -57,3 +60,38 @@ const graphics = await getCollection("graphics");
 
   <Lightbox />
 </Layout>
+
+<style is:global>
+  .description a {
+    text-decoration: underline;
+  }
+
+  .description a:hover {
+    color: var(--accent);
+    /*position: relative;*/
+  }
+
+  /*.description a:hover::after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("/icons/arrow-up-right.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    padding-left: 20px;
+    padding: 4px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges; 
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated; 
+    image-rendering: optimize-contrast; 
+    -ms-interpolation-mode: nearest-neighbor; 
+  }*/
+</style>
