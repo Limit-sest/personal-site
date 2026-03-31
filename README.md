@@ -1,5 +1,5 @@
 # My own site
-This repo contains source code for my website, which you can find at [**kucera.dev**](https://kucera.dev). I've created this site without AI, because I want this site to be truly mine.
+This repo contains source code for my website, which you can find at [**kucera.dev**](https://kucera.dev).
 
 NOTE: the `main` branch is the development branch, while the contents displayed on the website come from the `prod` branch.
 
