@@ -14,7 +14,7 @@ const photos = await getCollection("photos");
 >
   {
     photos.map((album, albumIndex) => (
-      <section class="flex w-full flex-col" data-album={albumIndex}>
+      <section class="mb-16 flex w-full flex-col" data-album={albumIndex}>
         <div class="border-accent mb-2 flex items-baseline justify-between border-b pb-0.5">
           <h2 class="text-accent font-display text-2xl">{album.data.name}</h2>
           <p class="text-accent text-xl">{album.data.meta}</p>

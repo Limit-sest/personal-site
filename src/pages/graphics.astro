@@ -14,7 +14,7 @@ const graphics = await getCollection("graphics");
 >
   {
     graphics.map((project, albumIndex) => (
-      <section class="flex w-full flex-col" data-album={albumIndex}>
+      <section class="mb-16 flex w-full flex-col" data-album={albumIndex}>
         <div class="border-accent mb-2 flex items-baseline justify-between border-b pb-0.5">
           <h2 class="text-accent font-display text-2xl">{project.data.name}</h2>
           <p class="text-accent text-xl">{project.data.meta}</p>
