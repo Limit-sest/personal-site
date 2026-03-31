@@ -60,6 +60,13 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
               { "font-display": header === "Grafika" },
             ]}>Grafika</a
           >
+          <a
+            href="/photos"
+            class:list={[
+              "hover:text-accent hover:underline",
+              { "font-display": header === "Fotky" },
+            ]}>Fotky</a
+          >
         </div>
         <!-- <button
           id="theme-switch"

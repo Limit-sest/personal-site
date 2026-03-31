@@ -1,0 +1,11 @@
+{
+  "name": "Architektura",
+  "meta": "Praha 2026",
+  "images": [
+    { "path": "/src/assets/photos/architektura1/83.jpg" },
+    { "path": "/src/assets/photos/architektura1/73.jpg" },
+    { "path": "/src/assets/photos/architektura1/81.jpg" },
+    { "path": "/src/assets/photos/architektura1/71.jpg" },
+    { "path": "/src/assets/photos/architektura1/51.jpg" }
+  ]
+}

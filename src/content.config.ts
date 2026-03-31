@@ -46,4 +46,25 @@ const graphics = defineCollection({
     }),
 });
 
-export const collections = { projects, graphics };
+const photos = defineCollection({
+  loader: glob({
+    pattern: "**/index.json",
+    base: "./src/assets/photos",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      meta: z.string().optional(),
+      images: z
+        .array(
+          z.object({
+            path: image(),
+            colspan: z.number().max(3).default(1),
+            rowspan: z.number().max(3).default(1),
+          }),
+        )
+        .optional(),
+    }),
+});
+
+export const collections = { projects, graphics, photos };
