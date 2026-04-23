@@ -1,0 +1,12 @@
+{
+  "name": "Sešlost",
+  "description": "Vytvořil jsem grafiku pro malou kamarádskou akci, která proběhla 2. 5. 2026. Vytvářel jsem plakáty s pozvánkou, která se mezi lidmi sdílela a pak jsem vytvořil i plakát pro příspěvek.",
+  "meta": "2024–25",
+  "images": [
+    { "path": "/src/assets/graphics/seslost/1.jpg" },
+    {
+      "path": "/src/assets/graphics/seslost/2.jpg"
+    },
+    { "path": "/src/assets/graphics/seslost/3.jpg" }
+  ]
+}
