@@ -10,14 +10,14 @@ const projects = defineCollection({
     z.object({
       name: z.string(),
       tags: z.array(z.string()),
-      year: z.number(),
+      year: z.union([z.number(), z.string()]),
       image: image(),
       priority: z.number(),
       links: z
         .array(
           z.object({
-            name: z.string(),
-            url: z.string(),
+            name: z.string().optional(),
+            url: z.string().optional(),
           }),
         )
         .optional(),
