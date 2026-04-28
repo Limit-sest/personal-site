@@ -31,7 +31,7 @@ const photos = await getCollection("photos");
               >
                 <Picture
                   src={image.path}
-                  alt=""
+                  alt={`${album.data.name} – ${imageIndex + 1}`}
                   class="block w-full rounded-3xl"
                   widths={[200, 400, 608, 1216]}
                   sizes="(min-width: 640px) 50vw, calc(100vw - 66px)"

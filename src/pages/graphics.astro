@@ -43,7 +43,7 @@ const graphics = await getCollection("graphics");
               >
                 <Picture
                   src={image.path}
-                  alt=""
+                  alt={`${project.data.name} – ${imageIndex + 1}`}
                   class="block h-full rounded-3xl object-cover"
                   widths={[200, 400, 608, 1216]}
                   sizes={sizes}

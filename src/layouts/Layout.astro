@@ -1,7 +1,16 @@
 ---
 import "../global.css";
 
-const { header, subheader, lang, displayProject, description } = Astro.props;
+const { header, subheader, lang, displayProject, description, image, isHome } =
+  Astro.props;
+
+const segments = ["Tonda Kučera", header, subheader].filter(Boolean);
+const title = segments.join(" / ");
+
+const ogImage = new URL(image ?? "/android-chrome-512x512.png", Astro.site)
+  .href;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const desc = description ?? "Tonda Kučera - programátor, grafik a kreativec.";
 ---
 
 <html lang={lang} class="bg-[#F7F4F0] dark:bg-[#111116] dark:text-neutral-50">
@@ -9,16 +18,43 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>
-      Tonda Kučera / {header}{subheader != null && " / "}{
-        subheader != null && subheader
-      }
-    </title>
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    {description && <meta name="description" content={description} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tonda Kučera" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="cs_CZ" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {
+      isHome && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Tonda Kučera",
+            url: "https://kucera.dev",
+            email: "mailto:tonda@kucera.dev",
+            jobTitle: "Programátor, grafik a kreativec",
+            sameAs: ["https://github.com/Limit-sest"],
+          })}
+        />
+      )
+    }
   </head>
   <body class="border-accent relative mx-auto mb-8 max-w-2xl border">
     <header class="">
@@ -30,9 +66,9 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
           href="https://kucera.dev">Tonda Kučera</a
         >
         <div class="h-1 flex-1 border-b border-b-white"></div>
-        <p class="font-display text-white">
+        <h1 class="font-display text-white">
           {header}{subheader != null && " / "}{subheader != null && subheader}
-        </p>
+        </h1>
       </div>
     </header>
 
@@ -68,12 +104,6 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
             ]}>Fotky</a
           >
         </div>
-        <!-- <button
-          id="theme-switch"
-          role="none"
-          class="ml-2 h-6 w-6 cursor-pointer"
-          ><img src="/icons/sun.png" alt="theme switcher icon" /></button
-        > -->
       </div>
       {
         displayProject && (
@@ -96,41 +126,7 @@ const { header, subheader, lang, displayProject, description } = Astro.props;
       >
         <p>&copy;Tonda Kučera 2025–26</p>
         <div class="border-b-accent h-1 flex-1 border-b"></div>
-        <a>Credits</a>
       </div>
     </footer>
   </body>
 </html>
-
-<!-- <script is:inline>
-  const themeSwitch = document.querySelector("#theme-switch");
-  const themeSwitchImg = themeSwitch.querySelector("img");
-
-  function updateColorScheme() {
-    const isDark =
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.classList.toggle("dark", isDark);
-    if (isDark) themeSwitchImg.src = "/icons/moon.png";
-    else themeSwitchImg.src = "/icons/sun.png";
-  }
-
-  themeSwitch.addEventListener("click", () => {
-    const isDark =
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    localStorage.theme = isDark ? "light" : "dark";
-    updateColorScheme();
-  });
-
-  updateColorScheme();
-</script>
-
-<style>
-  .dark #theme-switch img {
-    filter: invert(99%) sepia(99%) saturate(0%) hue-rotate(153deg)
-      brightness(109%) contrast(100%);
-  }
-</style> -->

@@ -6,9 +6,10 @@ import Layout from "../layouts/Layout.astro";
   header="O mně"
   lang="cs"
   description="Tonda Kučera - programátor, grafik a kreativec."
+  isHome={true}
 >
   <section class="mb-8">
-    <h1 class="font-display text-accent mb-2 text-4xl font-bold">ahoj,</h1>
+    <h2 class="font-display text-accent mb-2 text-4xl font-bold">ahoj,</h2>
     <p class="text-xl">
       <span class="text-accent font-medium">já jsem Tonda.</span>
       Rád tvořím nové věci a jsem kreativní. Baví mě design a vývoj webů, tvoření
@@ -17,7 +18,7 @@ import Layout from "../layouts/Layout.astro";
   </section>
   <section class="mb-8 text-xl">
     <h2 class="font-display text-accent mb-2">Můžeš mě najít na...</h2>
-    <adress
+    <address
       ><ul role="list" class="star space-y-2">
         <li>
           Githubu, jako <a
@@ -32,7 +33,7 @@ import Layout from "../layouts/Layout.astro";
           >
             @limit6<img
               src="/icons/copy.png"
-              alt=""
+              alt="Kopírovat"
               class="pixelated ml-1 inline h-6 w-6 align-text-top"
             />
           </p>
@@ -44,12 +45,12 @@ import Layout from "../layouts/Layout.astro";
           >
             tonda@kucera.dev<img
               src="/icons/copy.png"
-              alt=""
+              alt="Kopírovat"
               class="pixelated ml-1 inline h-6 w-6 align-text-top"
             />
           </p>
         </li>
-      </ul></adress
+      </ul></address
     >
   </section>
   <section class="grid grid-cols-2 text-xl">

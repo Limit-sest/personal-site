@@ -21,7 +21,7 @@ const renderedProjects = await Promise.all(
     {
       renderedProjects.map(({ data, Content }, index) => (
         <article class="group flex flex-col">
-          <h1 class="hidden">{data.name}</h1>
+          <h2 class="hidden">{data.name}</h2>
           <p class="font-display text-accent mb-4 text-center text-sm">
             {data.year}
           </p>
