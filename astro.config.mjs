@@ -9,5 +9,10 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://kucera.dev",
   vite: { plugins: [tailwindcss()] },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes("/credits"),
+    }),
+  ],
 });

@@ -1,8 +1,16 @@
 ---
 import "../global.css";
 
-const { header, subheader, lang, displayProject, description, image, isHome } =
-  Astro.props;
+const {
+  header,
+  subheader,
+  lang,
+  displayProject,
+  description,
+  image,
+  isHome,
+  noindex,
+} = Astro.props;
 
 const segments = ["Tonda Kučera", header, subheader].filter(Boolean);
 const title = segments.join(" / ");
@@ -20,6 +28,7 @@ const desc = description ?? "Tonda Kučera - programátor, grafik a kreativec.";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={desc} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -126,6 +135,7 @@ const desc = description ?? "Tonda Kučera - programátor, grafik a kreativec.";
       >
         <p>&copy;Tonda Kučera 2025–26</p>
         <div class="border-b-accent h-1 flex-1 border-b"></div>
+        <a href="/credits" class="underline">Credits</a>
       </div>
     </footer>
   </body>
