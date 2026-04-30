@@ -11,24 +11,24 @@ import Layout from "../layouts/Layout.astro";
   <section class="mb-8">
     <h2 class="font-display text-accent mb-2 text-4xl font-bold">ahoj,</h2>
     <p class="text-xl">
-      <span class="text-accent font-medium">já jsem Tonda.</span>
+      <span class="text-accent">já jsem Tonda.</span>
       Rád tvořím nové věci a jsem kreativní. Baví mě design a vývoj webů, tvoření
       grafiky a experimentování s počítači. Taky mám rád kafe a lezení.
     </p>
   </section>
   <section class="mb-8 text-xl">
     <h2 class="font-display text-accent mb-2">Můžeš mě najít na...</h2>
-    <address>
+    <adress>
       <ul role="list" class="star space-y-2">
         <li>
           Githubu, jako <a
             href="https://github.com/Limit-sest"
-            class="text-accent font-medium underline">@Limit-sest</a
+            class="text-accent underline">@Limit-sest</a
           >
         </li>
         <li>
           Discordu, jako <p
-            class="text-accent copy inline cursor-pointer font-medium"
+            class="text-accent copy inline cursor-pointer"
             data-copy="@limit6"
           >
             @limit6<img
@@ -41,12 +41,12 @@ import Layout from "../layouts/Layout.astro";
         <li>
           Instagramu, kde mám hlavně fotky - <a
             href="https://www.instagram.com/limittt6/"
-            class="text-accent font-medium underline">@limittt6</a
+            class="text-accent underline">@limittt6</a
           >
         </li>
         <li>
           Nebo mi napiš email na <p
-            class="text-accent copy inline cursor-pointer font-medium"
+            class="text-accent copy inline cursor-pointer"
             data-copy="tonda@kucera.dev"
           >
             tonda@kucera.dev<img
@@ -57,7 +57,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </li>
       </ul>
-    </address>
+    </adress>
   </section>
   <section class="grid grid-cols-2 text-xl">
     <article>
@@ -95,6 +95,11 @@ import Layout from "../layouts/Layout.astro";
   }
   li {
     padding-left: 12px;
+  }
+  address {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
   }
 </style>
 
