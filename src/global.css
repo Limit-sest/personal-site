@@ -71,3 +71,11 @@ img.pixelated {
   image-rendering: optimize-contrast; /* CSS3 Proposed                  */
   -ms-interpolation-mode: nearest-neighbor; /* IE8+                           */
 }
+
+p > a {
+  text-decoration: underline;
+}
+
+p > a:hover {
+  color: var(--accent);
+}
