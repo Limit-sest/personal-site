@@ -33,7 +33,7 @@ const renderedProjects = await Promise.all(
               loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
-          <div class="mx-auto mt-6 max-w-md space-y-2 text-lg hyphens-auto">
+          <div class="description mx-auto mt-6 max-w-md space-y-2 text-lg hyphens-auto">
             <Content />
           </div>
           <div class="button-container mx-auto mt-8 w-full max-w-md gap-3">
@@ -66,5 +66,10 @@ const renderedProjects = await Promise.all(
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+  }
+
+  .description :global(img) {
+    border-radius: 16px;
+    margin: 12px 0px;
   }
 </style>
