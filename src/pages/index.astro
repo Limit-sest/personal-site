@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
   description="Tonda Kučera - programátor, grafik a kreativec."
   isHome={true}
 >
-  <section class="mb-8">
+  <section>
     <h2 class="font-display text-accent mb-2 text-4xl font-bold">ahoj,</h2>
     <p class="text-xl">
       <span class="text-accent">já jsem Tonda.</span>
@@ -16,7 +16,7 @@ import Layout from "../layouts/Layout.astro";
       grafiky a experimentování s počítači. Taky mám rád kafe a lezení.
     </p>
   </section>
-  <section class="mb-8 text-xl">
+  <section class="text-xl">
     <h2 class="font-display text-accent mb-2">Můžeš mě najít na...</h2>
     <adress>
       <ul role="list" class="star space-y-2">
@@ -72,6 +72,25 @@ import Layout from "../layouts/Layout.astro";
       </ul>
     </article>
   </section>
+  <section class="text-xl">
+    <h2 class="font-display text-accent mb-2">Zajímaví lidé</h2>
+    <ul role="list" class="star space-y-2">
+      <li>
+        <a
+          href="https://www.youtube.com/@ouut_heere"
+          class="text-accent underline"
+          target="_blank">out here.</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.youtube.com/@MakeWithMiles"
+          class="text-accent underline"
+          target="_blank">Make with miles</a
+        >
+      </li>
+    </ul>
+  </section>
 </Layout>
 
 <style>
@@ -95,6 +114,10 @@ import Layout from "../layouts/Layout.astro";
     margin: 0;
     padding: 0;
     font-style: normal;
+  }
+
+  section {
+    margin-bottom: calc(var(--spacing) * 8);
   }
 </style>
 
