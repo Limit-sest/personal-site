@@ -1,0 +1,14 @@
+{
+  "name": "Turecko",
+  "meta": "Antalya a okolí 2026",
+  "images": [
+    { "path": "/src/assets/photos/turecko/IMG_0185.png" },
+    { "path": "/src/assets/photos/turecko/IMG_0165.png" },
+    { "path": "/src/assets/photos/turecko/IMG_0199.png" },
+    { "path": "/src/assets/photos/turecko/IMG_0202.png" },
+    { "path": "/src/assets/photos/turecko/IMG_0205.png" },
+    { "path": "/src/assets/photos/turecko/IMG_0292.png" },
+    { "path": "/src/assets/photos/turecko/Collage.png" },
+    { "path": "/src/assets/photos/turecko/IMG_0330.png" }
+  ]
+}

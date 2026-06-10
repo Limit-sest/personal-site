@@ -16,31 +16,67 @@ const photos = await getCollection("photos");
     photos.map((album, albumIndex) => (
       <section class="mb-16 flex w-full flex-col" data-album={albumIndex}>
         <div class="border-accent mb-2 flex items-baseline justify-between border-b pb-0.5">
-          <h2 class="text-accent font-display text-2xl">{album.data.name}</h2>
+          <h2
+            id={album.id}
+            class="text-accent font-display scroll-mt-24 text-2xl"
+          >
+            {album.data.name}
+          </h2>
           <p class="text-accent text-xl">{album.data.meta}</p>
         </div>
-        <div class="columns-1 gap-2 sm:columns-2">
-          {album.data.images?.map((image, imageIndex) => {
-            return (
-              <button
-                type="button"
-                class="lightbox-trigger mb-2 block w-full cursor-pointer break-inside-avoid"
-                data-album={albumIndex}
-                data-index={imageIndex}
-                data-src={image.path.src}
-              >
-                <Picture
-                  src={image.path}
-                  alt={`${album.data.name} – ${imageIndex + 1}`}
-                  class="block w-full rounded-3xl"
-                  widths={[200, 400, 608, 1216]}
-                  sizes="(min-width: 640px) 50vw, calc(100vw - 66px)"
-                  formats={["avif", "webp"]}
-                  loading="lazy"
-                />
-              </button>
-            );
-          })}
+        <div class="flex gap-2">
+          <div class="flex flex-1 flex-col gap-2">
+            {album.data.images
+              ?.filter((_, i) => i % 2 === 0)
+              .map((image, fi) => {
+                const imageIndex = fi * 2;
+                return (
+                  <button
+                    type="button"
+                    class="lightbox-trigger block w-full cursor-pointer"
+                    data-album={albumIndex}
+                    data-index={imageIndex}
+                    data-src={image.path.src}
+                  >
+                    <Picture
+                      src={image.path}
+                      alt={`${album.data.name} – ${imageIndex + 1}`}
+                      class="block w-full rounded-3xl"
+                      widths={[200, 400, 608, 1216]}
+                      sizes="(min-width: 640px) 50vw, calc(100vw - 66px)"
+                      formats={["avif", "webp"]}
+                      loading="lazy"
+                    />
+                  </button>
+                );
+              })}
+          </div>
+          <div class="flex flex-1 flex-col gap-2">
+            {album.data.images
+              ?.filter((_, i) => i % 2 === 1)
+              .map((image, fi) => {
+                const imageIndex = fi * 2 + 1;
+                return (
+                  <button
+                    type="button"
+                    class="lightbox-trigger block w-full cursor-pointer"
+                    data-album={albumIndex}
+                    data-index={imageIndex}
+                    data-src={image.path.src}
+                  >
+                    <Picture
+                      src={image.path}
+                      alt={`${album.data.name} – ${imageIndex + 1}`}
+                      class="block w-full rounded-3xl"
+                      widths={[200, 400, 608, 1216]}
+                      sizes="(min-width: 640px) 50vw, calc(100vw - 66px)"
+                      formats={["avif", "webp"]}
+                      loading="lazy"
+                    />
+                  </button>
+                );
+              })}
+          </div>
         </div>
       </section>
     ))
