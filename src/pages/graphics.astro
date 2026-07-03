@@ -35,7 +35,7 @@ const graphics = await getCollection("graphics");
             return (
               <button
                 type="button"
-                class="lightbox-trigger flex h-full w-full cursor-pointer items-center justify-center"
+                class="lightbox-trigger relative block h-full w-full cursor-pointer overflow-hidden"
                 style={`grid-row: auto / span ${image.rowspan}; grid-column: auto / span ${image.colspan}; aspect-ratio: ${image.colspan}/${image.rowspan}`}
                 data-album={albumIndex}
                 data-index={imageIndex}
@@ -44,7 +44,7 @@ const graphics = await getCollection("graphics");
                 <Picture
                   src={image.path}
                   alt={`${project.data.name} – ${imageIndex + 1}`}
-                  class="block h-full rounded-3xl object-cover"
+                  class="absolute inset-0 h-full w-full rounded-3xl object-cover"
                   widths={[200, 400, 608, 1216]}
                   sizes={sizes}
                   formats={["avif", "webp"]}
