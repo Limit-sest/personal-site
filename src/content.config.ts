@@ -33,7 +33,7 @@ const graphics = defineCollection({
     z.object({
       name: z.string(),
       description: z.string().optional(),
-      meta: z.string().optional(),
+      year: z.union([z.number(), z.string()]),
       images: z
         .array(
           z.object({
@@ -54,7 +54,9 @@ const photos = defineCollection({
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      meta: z.string().optional(),
+      firstDate: z.coerce.date(),
+      lastDate: z.coerce.date(),
+      releaseDate: z.coerce.date(),
       images: z
         .array(
           z.object({

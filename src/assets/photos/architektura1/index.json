@@ -1,6 +1,8 @@
 {
   "name": "Architektura",
-  "meta": "Praha 2026",
+  "firstDate": "2026-03-01",
+  "lastDate": "2026-03-04",
+  "releaseDate": "2026-03-07",
   "images": [
     { "path": "/src/assets/photos/architektura1/83.jpg" },
     { "path": "/src/assets/photos/architektura1/73.jpg" },

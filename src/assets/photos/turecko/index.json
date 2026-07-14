@@ -1,6 +1,8 @@
 {
   "name": "Turecko",
-  "meta": "Antalya a okolí 2026",
+  "firstDate": "2026-05-09",
+  "lastDate": "2026-05-11",
+  "releaseDate": "2026-06-10",
   "images": [
     { "path": "/src/assets/photos/turecko/IMG_0185.jpg" },
     { "path": "/src/assets/photos/turecko/IMG_0165.jpg" },

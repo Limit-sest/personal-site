@@ -1,7 +1,7 @@
 {
   "name": "Let's study",
   "description": "Let's Study je projekt, který od roku 2021 pomáhá studentům s učením. Pro něj jsem vytvářel grafické příspěvky na Instagram a Discord.",
-  "meta": "2025",
+  "year": 2025,
   "images": [
     {
       "path": "/src/assets/graphics/lets-study/header.png",

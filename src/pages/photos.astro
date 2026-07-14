@@ -4,7 +4,24 @@ import Lightbox from "../components/Lightbox.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 
-const photos = await getCollection("photos");
+const photos = (await getCollection("photos")).sort(
+  (a, b) => b.data.releaseDate.getTime() - a.data.releaseDate.getTime(),
+);
+
+const monthFmt = new Intl.DateTimeFormat("cs-CZ", {
+  month: "long",
+  timeZone: "UTC",
+});
+function formatDateRange(first: Date, last: Date) {
+  const fy = first.getUTCFullYear(),
+    ly = last.getUTCFullYear();
+  const fm = first.getUTCMonth(),
+    lm = last.getUTCMonth();
+  if (fy === ly && fm === lm) return `${monthFmt.format(last)} ${ly}`;
+  if (fy === ly)
+    return `${monthFmt.format(first)}–${monthFmt.format(last)} ${ly}`;
+  return `${monthFmt.format(first)} ${fy} – ${monthFmt.format(last)} ${ly}`;
+}
 ---
 
 <Layout
@@ -22,7 +39,9 @@ const photos = await getCollection("photos");
           >
             {album.data.name}
           </h2>
-          <p class="text-accent text-xl">{album.data.meta}</p>
+          <p class="text-accent text-xl">
+            {formatDateRange(album.data.firstDate, album.data.lastDate)}
+          </p>
         </div>
         <div class="flex gap-2">
           <div class="flex flex-1 flex-col gap-2">

@@ -4,7 +4,9 @@ import Lightbox from "../components/Lightbox.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 
-const graphics = await getCollection("graphics");
+const graphics = (await getCollection("graphics")).sort(
+  (a, b) => parseInt(String(b.data.year), 10) - parseInt(String(a.data.year), 10),
+);
 ---
 
 <Layout
@@ -17,7 +19,7 @@ const graphics = await getCollection("graphics");
       <section class="mb-16 flex w-full flex-col" data-album={albumIndex}>
         <div class="border-accent mb-2 flex items-baseline justify-between border-b pb-0.5">
           <h2 class="text-accent font-display text-2xl">{project.data.name}</h2>
-          <p class="text-accent text-xl">{project.data.meta}</p>
+          <p class="text-accent text-xl">{project.data.year}</p>
         </div>
         <p
           class="description mb-4 text-lg leading-tight"
