@@ -4,18 +4,69 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 4
     labels:
       - "dependencies"
     commit-message:
       prefix: "deps"
+    groups:
+      astro-tailwind-minor-patch:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+          - "tailwindcss"
+          - "@tailwindcss/*"
+        update-types:
+          - "minor"
+          - "patch"
+      astro-tailwind-major:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+          - "tailwindcss"
+          - "@tailwindcss/*"
+        update-types:
+          - "major"
+      npm-minor-patch:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "astro"
+          - "@astrojs/*"
+          - "tailwindcss"
+          - "@tailwindcss/*"
+        update-types:
+          - "minor"
+          - "patch"
+      npm-major:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "astro"
+          - "@astrojs/*"
+          - "tailwindcss"
+          - "@tailwindcss/*"
+        update-types:
+          - "major"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 4
     labels:
       - "dependencies"
     commit-message:
       prefix: "deps"
+    groups:
+      actions-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      actions-major:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
