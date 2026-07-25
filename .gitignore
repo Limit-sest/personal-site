@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 
 PPAgrandir-GrandHeavy.*
+
+# bun lockfile - this repo uses npm (package-lock.json) so Dependabot can maintain it
+bun.lock
