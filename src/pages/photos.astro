@@ -4,15 +4,29 @@ import Lightbox from "../components/Lightbox.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 
+function toDate(value: unknown): Date | null {
+  if (value instanceof Date) return Number.isNaN(value.getTime()) ? null : value;
+  if (typeof value === "string" || typeof value === "number") {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+  return null;
+}
+
 const photos = (await getCollection("photos")).sort(
-  (a, b) => b.data.releaseDate.getTime() - a.data.releaseDate.getTime(),
+  (a, b) =>
+    (toDate(b.data.releaseDate)?.getTime() ?? 0) -
+    (toDate(a.data.releaseDate)?.getTime() ?? 0),
 );
 
 const monthFmt = new Intl.DateTimeFormat("cs-CZ", {
   month: "long",
   timeZone: "UTC",
 });
-function formatDateRange(first: Date, last: Date) {
+function formatDateRange(firstValue: unknown, lastValue: unknown) {
+  const first = toDate(firstValue) ?? toDate(lastValue);
+  const last = toDate(lastValue) ?? first;
+  if (!first || !last) return "";
   const fy = first.getUTCFullYear(),
     ly = last.getUTCFullYear();
   const fm = first.getUTCMonth(),

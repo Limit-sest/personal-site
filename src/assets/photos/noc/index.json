@@ -1,0 +1,14 @@
+{
+  "name": "noc",
+  "firstDate": "2026-03-01",
+  "lastDate": "2026-07-20",
+  "releaseDate": "2026-07-25",
+  "images": [
+    { "path": "/src/assets/photos/noc/1.jpg" },
+    { "path": "/src/assets/photos/noc/2.jpg" },
+    { "path": "/src/assets/photos/noc/3.jpg" },
+    { "path": "/src/assets/photos/noc/4.jpg" },
+    { "path": "/src/assets/photos/noc/5.jpg" },
+    { "path": "/src/assets/photos/noc/6.jpg" }
+  ]
+}
