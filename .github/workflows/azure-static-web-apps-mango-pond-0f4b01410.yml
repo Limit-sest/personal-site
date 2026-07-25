@@ -24,7 +24,7 @@ jobs:
       # what ships is produced by the same pinned dependency tree that CI validates.
       # A build failure now fails this job before anything is uploaded.
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
