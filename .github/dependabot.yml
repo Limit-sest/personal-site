@@ -16,6 +16,7 @@ updates:
           - "@astrojs/*"
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "vite"
         update-types:
           - "minor"
           - "patch"
@@ -25,6 +26,7 @@ updates:
           - "@astrojs/*"
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "vite"
         update-types:
           - "major"
       npm-minor-patch:
@@ -35,6 +37,7 @@ updates:
           - "@astrojs/*"
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "vite"
         update-types:
           - "minor"
           - "patch"
@@ -46,6 +49,7 @@ updates:
           - "@astrojs/*"
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "vite"
         update-types:
           - "major"
 
