@@ -32,8 +32,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Required on the deploy path: production must never ship without the
+      # display font. A missing font is otherwise silent, since font-display
+      # falls back to ClashDisplay-Semibold rather than failing.
+      - name: Restore licensed fonts
+        env:
+          AGRANDIR_WOFF2_B64: ${{ secrets.AGRANDIR_WOFF2_B64 }}
+          REQUIRE_LICENSED_FONTS: "1"
+        run: ./scripts/restore-licensed-fonts.sh
+
       - name: Build
         run: npm run build
+
+      - name: Verify the font reached the build output
+        run: |
+          test -s dist/fonts/PPAgrandir-GrandHeavy.woff2 \
+            || { echo "::error::PPAgrandir-GrandHeavy.woff2 is missing from dist/"; exit 1; }
 
       - name: Deploy
         id: builddeploy
