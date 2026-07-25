@@ -13,7 +13,7 @@
     "@astrojs/sitemap": "3.7.3",
     "@tailwindcss/vite": "4.1.17",
     "astro": "6.1.2",
-    "tailwindcss": "4.1.17"
+    "tailwindcss": "4.3.3"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
