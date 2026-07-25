@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
-import { Picture } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.priority - a.data.priority,
@@ -26,12 +26,25 @@ const renderedProjects = await Promise.all(
             {data.year}
           </p>
           <div class="z-10">
-            <Picture
-              src={data.image}
-              alt={data.name}
-              class="-z-10 h-full"
-              loading={index === 0 ? "eager" : "lazy"}
-            />
+            {/* SVG sources are already vector, and Astro refuses to transcode
+                them to the avif/webp that <Picture> emits, so serve them
+                unchanged. Raster sources still get the full <Picture> treatment. */}
+            {data.image.format === "svg" ? (
+              <Image
+                src={data.image}
+                alt={data.name}
+                class="-z-10 h-full"
+                loading={index === 0 ? "eager" : "lazy"}
+                format="svg"
+              />
+            ) : (
+              <Picture
+                src={data.image}
+                alt={data.name}
+                class="-z-10 h-full"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            )}
           </div>
           <div class="description mx-auto mt-6 max-w-md space-y-2 text-lg hyphens-auto">
             <Content />
