@@ -10,7 +10,9 @@ permissions:
 
 jobs:
   enable-automerge:
-    if: github.actor == 'dependabot[bot]' && github.event.pull_request.draft == false
+    # pull_request.user is the PR author. github.actor would be whoever pushed
+    # most recently, which on a `synchronize` event is not necessarily Dependabot.
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Dependabot metadata
@@ -19,8 +21,41 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Enable auto-merge for patch/minor updates
-        if: contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.metadata.outputs.update-type)
+      # Auto-merge is only armed, never merged directly: the `build` check is
+      # required on main, so GitHub holds the merge until CI is green.
+      - name: Decide whether to auto-merge
+        id: decide
+        env:
+          ECOSYSTEM: ${{ steps.metadata.outputs.package-ecosystem }}
+          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
+          GROUP: ${{ steps.metadata.outputs.dependency-group }}
+        run: |
+          case "$ECOSYSTEM:$UPDATE_TYPE" in
+            # Action majors are low-risk and fully covered by the build check.
+            github_actions:*)
+              eligible=true
+              reason="$ECOSYSTEM $UPDATE_TYPE (majors included for github_actions)"
+              ;;
+            *:version-update:semver-patch | *:version-update:semver-minor)
+              eligible=true
+              reason="$ECOSYSTEM $UPDATE_TYPE"
+              ;;
+            *)
+              eligible=false
+              reason="$ECOSYSTEM $UPDATE_TYPE needs manual review"
+              ;;
+          esac
+          echo "eligible=$eligible" >>"$GITHUB_OUTPUT"
+          if [ "$eligible" = true ]; then
+            echo "::notice title=Auto-merge armed::$reason"
+            echo "Auto-merge **armed** - $reason (group: ${GROUP:-none})" >>"$GITHUB_STEP_SUMMARY"
+          else
+            echo "::notice title=Auto-merge not armed::$reason"
+            echo "Auto-merge **not armed** - $reason (group: ${GROUP:-none})" >>"$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Enable auto-merge
+        if: steps.decide.outputs.eligible == 'true'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
