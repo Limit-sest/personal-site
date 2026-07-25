@@ -50,9 +50,9 @@
 
 @font-face {
   font-family: "Agrandir";
-  src:
-    url("../fonts/PPAgrandir-GrandHeavy.woff2") format("woff2"),
-    url("../fonts/PPAgrandir-GrandHeavy.otf") format("opentype");
+  /* woff2 only: this font is not in the repo, it is restored in CI from the
+     AGRANDIR_WOFF2_B64 secret, and the .otf is too large to store there. */
+  src: url("../fonts/PPAgrandir-GrandHeavy.woff2") format("woff2");
   font-weight: 600;
   font-display: swap;
   font-style: normal;

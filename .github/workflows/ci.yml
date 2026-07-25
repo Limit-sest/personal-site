@@ -27,5 +27,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Warn-only here: CI's job is to prove the build compiles, and it should
+      # not go red for a build that merely lacks a licensed font. The deploy
+      # workflow requires it.
+      - name: Restore licensed fonts
+        env:
+          AGRANDIR_WOFF2_B64: ${{ secrets.AGRANDIR_WOFF2_B64 }}
+        run: ./scripts/restore-licensed-fonts.sh
+
       - name: Build
         run: npm run build
