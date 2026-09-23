@@ -1,0 +1,15 @@
+{
+  "name": "den",
+  "firstDate": "2026-03-01",
+  "lastDate": "2026-08-24",
+  "releaseDate": "2026-09-22",
+  "images": [
+    { "path": "/src/assets/photos/den/1.jpg" },
+    { "path": "/src/assets/photos/den/2.jpg" },
+    { "path": "/src/assets/photos/den/3.jpg" },
+    { "path": "/src/assets/photos/den/4.jpg" },
+    { "path": "/src/assets/photos/den/5.jpg" },
+    { "path": "/src/assets/photos/den/6.jpg" },
+    { "path": "/src/assets/photos/den/7.jpg" }
+  ]
+}
