@@ -8,27 +8,46 @@ import Layout from "../layouts/Layout.astro";
   description="Tonda Kučera - programátor, grafik a kreativec."
   isHome={true}
 >
-  <section>
-    <h2 class="font-display text-accent mb-2 text-4xl font-bold">ahoj,</h2>
-    <p class="text-xl">
-      <span class="text-accent">já jsem Tonda.</span>
-      Rád tvořím nové věci a jsem kreativní. Baví mě design a vývoj webů, tvoření
-      grafiky a experimentování s počítači. Taky mám rád kafe a lezení.
+  <section class="space-y-3 text-xl">
+    <h2 class="font-display text-accent mb-2 text-4xl font-bold">ahoj!</h2>
+    <p>
+      <span class="text-accent"
+        >já jsem Tonda. Student, lezec, programátor a umělec.</span
+      >
+    </p>
+    <p>
+      Aktuálně studuju na <a href="https://ssps.cz/">Smíchovské střední</a> a jsem
+      spoluzakladatelem studentského startupu <a href="https://intstudio.cz"
+        >Integer studio</a
+      >, kde vyvíjíme interní aplikace pro firmy. Pracujeme na něm s kamarády už
+      od roku 2025.
+    </p>
+    <p>
+      Ve školním roce 2025/26 jsem učil informatiku na <a
+        href="https://www.skolapoznavani.cz/">ZŠ Poznávání</a
+      >, kde jsem děti seznamoval s programováním, bezpečným pohybem na
+      internetu a jak technologie prakticky fungují.
+    </p>
+    <p>
+      Když mám čas, rád <a href="/photos">fotím</a> a hraju si s kompozicí, tvořím
+      elektronickou hudbu nebo designuju
+      <a href="/graphics">grafiku</a>.
     </p>
   </section>
   <section class="text-xl">
     <h2 class="font-display text-accent mb-2">Můžeš mě najít na...</h2>
-    <adress>
+    <address>
       <ul role="list" class="star space-y-2">
         <li>
-          Githubu, jako <a
+          GitHubu, jako <a
             href="https://github.com/Limit-sest"
             class="text-accent underline"
             target="_blank">@Limit-sest</a
           >
         </li>
         <li>
-          Discordu, jako <p
+          Discordu, jako <button
+            type="button"
             class="text-accent copy inline cursor-pointer"
             data-copy="@limit6"
           >
@@ -37,10 +56,11 @@ import Layout from "../layouts/Layout.astro";
               alt="Kopírovat"
               class="pixelated ml-1 inline h-6 w-6 align-text-top"
             />
-          </p>
+          </button>
         </li>
         <li>
-          Nebo mi napiš email na <p
+          Nebo mi napiš email na <button
+            type="button"
             class="text-accent copy inline cursor-pointer"
             data-copy="tonda@kucera.dev"
           >
@@ -49,28 +69,10 @@ import Layout from "../layouts/Layout.astro";
               alt="Kopírovat"
               class="pixelated ml-1 inline h-6 w-6 align-text-top"
             />
-          </p>
+          </button>
         </li>
       </ul>
-    </adress>
-  </section>
-  <section class="grid grid-cols-2 text-xl">
-    <article>
-      <h2 class="font-display text-accent">Mám rád:</h2>
-      <ul class="plus space-y-2">
-        <li>Linux</li>
-        <li>Open source</li>
-        <li>Internet</li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="font-display text-accent">Nemám rád:</h2>
-      <ul class="minus space-y-2">
-        <li>Windows</li>
-        <li>Velké korporace</li>
-        <li>Internet</li>
-      </ul>
-    </article>
+    </address>
   </section>
   <section class="text-xl">
     <h2 class="font-display text-accent mb-2">Zajímaví lidé a projekty</h2>
@@ -98,7 +100,7 @@ import Layout from "../layouts/Layout.astro";
       </li>
       <li>
         <a
-          href="https://podcastdira.cz/"
+          href="https://www.instagram.com/_upground_/"
           class="text-accent underline"
           target="_blank">Upground</a
         >
@@ -110,12 +112,6 @@ import Layout from "../layouts/Layout.astro";
 <style>
   ul.star {
     list-style-type: "✳";
-  }
-  ul.minus {
-    list-style-type: "☹";
-  }
-  ul.plus {
-    list-style-type: "☺";
   }
   ul {
     list-style-position: outside;
@@ -148,78 +144,14 @@ import Layout from "../layouts/Layout.astro";
 </style>
 
 <script>
-  declare global {
-    interface Window {
-      Clipboard: {
-        copy: (text: string) => void;
-      };
-    }
-  }
-
-  window.Clipboard = (function (
-    window: Window,
-    document: Document,
-    navigator: Navigator,
-  ) {
-    let textArea: HTMLTextAreaElement | null = null;
-
-    function isOS(): boolean {
-      return !!navigator.userAgent.match(/ipad|iphone/i);
-    }
-
-    function createTextArea(text: string): void {
-      textArea = document.createElement("textarea");
-      textArea.value = text;
-      textArea.readOnly = true;
-      document.body.appendChild(textArea);
-    }
-
-    function selectText(): void {
-      if (!textArea) return;
-
-      if (isOS()) {
-        const range = document.createRange();
-        range.selectNodeContents(textArea);
-
-        const selection = window.getSelection();
-
-        if (selection) {
-          selection.removeAllRanges();
-          selection.addRange(range);
-          textArea.setSelectionRange(0, 999999);
-        }
-      } else {
-        textArea.select();
-      }
-    }
-
-    function copyToClipboard(): void {
-      document.execCommand("copy");
-
-      if (textArea && document.body.contains(textArea)) {
-        document.body.removeChild(textArea);
-        textArea = null;
-      }
-    }
-
-    const copy = function (text: string): void {
-      createTextArea(text);
-      selectText();
-      copyToClipboard();
-    };
-
-    return {
-      copy: copy,
-    };
-  })(window, document, navigator);
-
   const copyElements = document.querySelectorAll(".copy");
 
   async function handleClick(event: Event) {
     const clickedElement = event.currentTarget as Element;
-    const data = clickedElement?.getAttribute("data-copy");
-    Clipboard.copy(data);
-    const img = clickedElement?.querySelector("img");
+    const data = clickedElement.getAttribute("data-copy");
+    if (!data) return;
+    await navigator.clipboard.writeText(data);
+    const img = clickedElement.querySelector("img");
     if (img) {
       img.src = "/icons/check.png";
       setTimeout(() => {

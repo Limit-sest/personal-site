@@ -5,7 +5,8 @@ import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 
 const graphics = (await getCollection("graphics")).sort(
-  (a, b) => parseInt(String(b.data.year), 10) - parseInt(String(a.data.year), 10),
+  (a, b) =>
+    parseInt(String(b.data.year), 10) - parseInt(String(a.data.year), 10),
 );
 ---
 
