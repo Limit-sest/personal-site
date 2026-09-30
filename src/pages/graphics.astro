@@ -3,10 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import Lightbox from "../components/Lightbox.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
+import { applyOffset } from "../lib/applyOffset";
 
-const graphics = (await getCollection("graphics")).sort(
-  (a, b) =>
-    parseInt(String(b.data.year), 10) - parseInt(String(a.data.year), 10),
+const graphics = applyOffset(
+  (await getCollection("graphics")).sort(
+    (a, b) =>
+      parseInt(String(b.data.year), 10) - parseInt(String(a.data.year), 10),
+  ),
 );
 ---
 

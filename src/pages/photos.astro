@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Lightbox from "../components/Lightbox.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
+import { applyOffset } from "../lib/applyOffset";
 
 function toDate(value: unknown): Date | null {
   if (value instanceof Date)
@@ -14,10 +15,12 @@ function toDate(value: unknown): Date | null {
   return null;
 }
 
-const photos = (await getCollection("photos")).sort(
-  (a, b) =>
-    (toDate(b.data.releaseDate)?.getTime() ?? 0) -
-    (toDate(a.data.releaseDate)?.getTime() ?? 0),
+const photos = applyOffset(
+  (await getCollection("photos")).sort(
+    (a, b) =>
+      (toDate(b.data.releaseDate)?.getTime() ?? 0) -
+      (toDate(a.data.releaseDate)?.getTime() ?? 0),
+  ),
 );
 
 const monthFmt = new Intl.DateTimeFormat("cs-CZ", {
