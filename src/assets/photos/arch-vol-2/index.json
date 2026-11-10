@@ -1,0 +1,14 @@
+{
+  "name": "architektura vol. 2",
+  "firstDate": "2026-06-12",
+  "lastDate": "2026-10-06",
+  "releaseDate": "2026-11-10",
+  "images": [
+    { "path": "/src/assets/photos/arch-vol-2/1.jpg" },
+    { "path": "/src/assets/photos/arch-vol-2/2.jpg" },
+    { "path": "/src/assets/photos/arch-vol-2/3.jpg" },
+    { "path": "/src/assets/photos/arch-vol-2/4.jpg" },
+    { "path": "/src/assets/photos/arch-vol-2/5.jpg" },
+    { "path": "/src/assets/photos/arch-vol-2/6.jpg" }
+  ]
+}
